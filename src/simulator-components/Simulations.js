@@ -28,7 +28,6 @@ export default function Simulations() {
   const [loading, setLoading] = useState(false)
   let [showModal, setShowModal] = useState(false)
 
-
   let [playerBetSpread, setPlayerBetSpread] = useState([
     25,
     25,
