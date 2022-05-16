@@ -1,0 +1,330 @@
+// @import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@font-face {
+  font-family: 'header';
+  src: url('../../css/fonts/Anton-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+:root {
+  --perspectivOriginY: 15%;
+}
+
+.headingContainer {
+  z-index: 10000;
+}
+
+.deckOfCardsContainer {
+  font-family: "header", sans-serif;
+  background-color: #151515;
+  color: #aaa;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.deckOfCardsContainer::before {
+  content: '';
+  display: block;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+}
+
+
+
+.header {
+  height: 100vh;
+  background-image: linear-gradient(0deg, rgba(21, 4, 32, 0.94) 0%, rgba(2, 83, 88, 0.99) 88%);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+
+  @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+    // -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    // clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    height: 100vh;
+  }
+
+  @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
+  only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+  only screen and (min-width: 125em) {
+    background-image: linear-gradient(0deg, rgba(21, 4, 32, 0.94) 0%, rgba(2, 83, 88, 0.99) 88%);
+  }
+
+  // @include respond(phone) {
+  //   -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  //   clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  // }
+
+  &__logoBox {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    height: 7.5rem;
+  }
+
+  &__textBox {
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.headingPrimary {
+  color: #fff;
+  backface-visibility: hidden;
+  margin-bottom: 0rem;
+  height: 40vh;
+
+  &Main {
+    display: block;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+    // @include respond(phone) {
+    //   letter-spacing: 1rem;
+    //   font-family: 5rem;
+    // }
+
+    /*
+        animation-delay: 3s;
+        animation-iteration-count: 3;
+        */
+  }
+
+  &Sub {
+    display: block;
+    font-size: 3.4rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    animation: moveInRight 1s ease-out;
+    margin-top: 60px;
+    // @include respond(phone) {
+    //   letter-spacing: .5rem;
+    // }
+  }
+}
+
+.headingSecondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, rgba(2, 83, 88, 0.99), rgba(21, 4, 32, 0.94));
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: .2rem;
+  transition: all 1s;
+
+  // @include respond(tab-port) {
+  //   font-size: 3rem;
+  // }
+
+  // @include respond(phone) {
+  //   font-size: 2.5rem;
+  // }
+}
+
+.headingPrimaryMain {
+  text-transform: uppercase;
+  font-size: 4rem;
+  padding: 20px;
+  letter-spacing: .4rem;
+  padding: 0px;
+  margin-top: 0px;
+  margin-bottom: 60px;
+  color: #eee;
+}
+
+@media (min-width: 500px) {
+  .header__textBox {
+    top: 60%;
+    width: 90%;
+  }
+
+  .headingPrimary {
+    height: 50vh;
+  }
+}
+
+@media (min-width: 760px) {
+  :root {
+    --perspectivOriginY: 35%;
+  }
+
+  .headingPrimary {
+    margin-bottom: 2rem;
+  }
+
+  .header__textBox {
+    width: 80%;
+  }
+
+  .headingPrimarySub {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600 !important;
+    /*font-size: 16px;*/
+    line-height: 1.7;
+    padding-bottom: 0px;
+    margin-top: 40px;
+    font-weight: 100;
+  }
+
+  .towerOuter {
+    perspective: 470px;
+  }
+
+  .headingPrimaryMain {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 24px;
+  }
+}
+
+@media(min-width: 900px) {
+  .headingPrimaryMain {
+    font-size: 5rem;
+  }
+
+  .headingPrimary {
+
+    &Sub {
+      display: block;
+      font-size: 4rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+@media (min-width: 1180px) {
+  .header__textBox {
+    width: 60%;
+  }
+}
+
+// button styles
+
+.btn {
+
+  &,
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none !important;
+    padding: 2rem 5rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .2s;
+    position: relative;
+    font-size: 3rem;
+    margin-top: 20px;
+    margin-bottom: 120px;
+    //Change for the <button> element
+    border: none;
+    cursor: pointer;
+  }
+
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba(#000, .2);
+  }
+
+  &White {
+    background-color: #fff;
+    color: #777;
+
+    &::after {
+      background-color: #fff;
+    }
+  }
+
+  &Green {
+    background-color: #2e7e7e;
+    color: #fff;
+
+    &::after {
+      background-color: rgba(2, 83, 88, 0.99);
+    }
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+  }
+
+  // &Animated {
+  //   animation: moveInBottom .5s ease-out .75s;
+  //   animation-fill-mode: backwards;
+  // }
+}
+
+.btnText {
+
+  &:link,
+  &:visited {
+    font-size: 1.6rem;
+    color: rgba(2, 83, 88, 0.99);
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(2, 83, 88, 0.99);
+    padding: 3px;
+    transition: all .2s;
+  }
+
+  &:active {
+    box-shadow: 0 .5rem 1rem rgba(#000, .15);
+    transform: translateY(0);
+  }
+}
+
+
+
+.btn {
+
+  &,
+  &:link,
+  &:visited {
+    margin-bottom: 0px;
+  }
+}

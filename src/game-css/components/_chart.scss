@@ -1,0 +1,74 @@
+ol, ul {
+  padding-left: 30px;
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  // display: table;
+  display: flex;
+}
+
+.board-row {
+  display: flex;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 14px;
+  height: 38px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 38px;
+  letter-spacing: -0.8px;
+  color: #000;
+}
+
+.greenSquare {
+  background: #24B573;
+}
+
+.turquoiseSquare {
+  background: #35BAB4;
+}
+
+.yellowSquare {
+  background: #EFC615;
+}
+
+@media #{$phone} {
+  .square {
+    letter-spacing: -1.5px;
+    width: 32px;
+    height: 32px;
+    font-size: 10px;
+  }
+}
+
+.square:focus {
+  outline: none;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.game-board {
+  display: flex;
+  justify-content: center;
+}

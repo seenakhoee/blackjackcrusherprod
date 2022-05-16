@@ -1,0 +1,16 @@
+.fadeIn {
+animation-name: fadein;
+animation-duration: .24s;
+animation-iteration-count: 1;
+animation-fill-mode: forwards;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

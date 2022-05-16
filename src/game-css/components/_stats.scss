@@ -1,0 +1,27 @@
+.app > header {
+  display: none;
+}
+
+// stats component
+.openStats {
+  display: block
+}
+
+.modal-content{
+    background: rgba(26, 26, 26, 0.94) !important;
+}
+
+.modal-backdrop {
+    background: rgba(0, 0, 0, .5) !important;
+}
+
+.stats{
+  li{
+    line-height: 1.4;
+    font-size: 16px;
+  }
+}
+
+.currentMistake {
+  border-top: 1px solid #dee2e6;
+}

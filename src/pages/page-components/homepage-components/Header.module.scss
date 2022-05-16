@@ -1,0 +1,475 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap');
+@import '../../css/abstracts/hp-variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100&display=swap');
+
+.rightSideNav {
+  display: none !important;
+}
+
+@media (min-width: 600px) {
+  .rightSideNav {
+    display: flex !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+}
+
+.fixed {
+  position: fixed;
+  height: 125px;
+  width: 100%;
+  z-index: 2000;
+}
+
+.mobileLink {
+  text-decoration: none;
+  color: #000;
+}
+
+.mobileLink:hover {
+  color: #000;
+}
+
+.headerThin {
+  background-color: #222323;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Mulish', sans-serif;
+
+  .leftSideNav {
+    display: flex;
+    align-items: center;
+  }
+
+  .rightSideNav {
+
+    h2 {
+      letter-spacing: 0rem;
+      margin: 0px;
+    }
+  }
+
+  .navLinkCountCards {
+    color: #eee;
+    font-size: 1.6rem;
+    margin-right: 30px;
+    text-decoration: none;
+  }
+
+  .navLinkCardCrusher {
+    color: #eee;
+    font-size: 1.6rem !important;
+    margin-right: 30px;
+    text-decoration: none;
+  }
+
+  .navLinkLeft {
+    color: #eee;
+    font-size: 2.3rem;
+    margin-right: 30px;
+    text-decoration: none;
+  }
+
+  h2 {
+    color: #eee;
+    font-size: 2rem;
+    letter-spacing: .4rem;
+  }
+
+  .textLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 6px;
+  }
+}
+
+@media(max-width: 600px) {
+  .navLinkCountCards {
+    display: none;
+  }
+
+  .navLinkCardCrusher {
+    display: none;
+  }
+
+  .textLogo {
+    >h2 {
+      font-size: 2rem !important;
+    }
+  }
+}
+
+.header {
+  height: 100vh;
+  background-image: linear-gradient(0deg, rgba(21, 4, 32, 0.94) 0%, rgba(2, 83, 88, 0.99) 88%);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+
+  @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+    // -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    // clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    height: 100vh;
+  }
+
+  @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
+  only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+  only screen and (min-width: 125em) {
+    background-image: linear-gradient(0deg, rgba(21, 4, 32, 0.94) 0%, rgba(2, 83, 88, 0.99) 88%);
+  }
+
+  // @include respond(phone) {
+  //   -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  //   clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  // }
+
+  &__logoBox {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    height: 7.5rem;
+  }
+
+  &__textBox {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}
+
+.headingPrimary {
+  color: $color-white;
+  text-transform: uppercase;
+
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+
+  &Main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+    // @include respond(phone) {
+    //   letter-spacing: 1rem;
+    //   font-family: 5rem;
+    // }
+
+    /*
+        animation-delay: 3s;
+        animation-iteration-count: 3;
+        */
+  }
+
+  &Sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out;
+
+    // @include respond(phone) {
+    //   letter-spacing: .5rem;
+    // }
+  }
+}
+
+.headingSecondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: .2rem;
+  transition: all 1s;
+
+  // @include respond(tab-port) {
+  //   font-size: 3rem;
+  // }
+
+  // @include respond(phone) {
+  //   font-size: 2.5rem;
+  // }
+}
+
+.headingTertiary {
+  font-size: $default-font-size;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: $default-font-size;
+
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
+
+.pages {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /*font-size: 16px;*/
+  line-height: 1.7;
+  color: $color-grey-dark;
+}
+
+.headingPrimary {
+  color: $color-white;
+  text-transform: uppercase;
+
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+
+  &Main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+    // @include respond(phone) {
+    //   letter-spacing: 1rem;
+    //   font-family: 5rem;
+    // }
+
+    /*
+        animation-delay: 3s;
+        animation-iteration-count: 3;
+        */
+  }
+
+  &Sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out;
+
+    // @include respond(phone) {
+    //   letter-spacing: .5rem;
+    // }
+  }
+}
+
+.headingSecondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: .2rem;
+  transition: all 1s;
+
+  // @include respond(tab-port) {
+  //   font-size: 3rem;
+  // }
+
+  // @include respond(phone) {
+  //   font-size: 2.5rem;
+  // }
+}
+
+.headingTertiary {
+  font-size: $default-font-size;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: $default-font-size;
+
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
+
+@media(max-width: 900px) {
+  .headingPrimaryMain {
+    color: #eee;
+    font-size: 5rem;
+    letter-spacing: .4rem;
+    padding: 24px;
+  }
+
+  .headingPrimary {
+
+    &Sub {
+      display: block;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 1rem;
+    }
+  }
+}
+
+.btn {
+
+  &,
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .2s;
+    position: relative;
+    font-size: $default-font-size;
+
+    //Change for the <button> element
+    border: none;
+    cursor: pointer;
+  }
+
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+  }
+
+  &White {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  &Green {
+    background-color: #2e7e7e;
+    color: $color-white;
+
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+  }
+
+  // &Animated {
+  //   animation: moveInBottom .5s ease-out .75s;
+  //   animation-fill-mode: backwards;
+  // }
+}
+
+.btnText {
+
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+    transition: all .2s;
+  }
+
+  &:active {
+    box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+    transform: translateY(0);
+  }
+}
+
+.howToCountBar {
+  display: block !important;
+  width: 100%;
+  background: #ddd;
+  color: rgb(37, 37, 37);
+  text-align: center;
+  padding-top: 8px;
+  padding-bottom: 6px;
+
+  h2 {
+    font-size: 2.4rem !important;
+    font-weight: 600 !important;
+  }
+}
+
+@media(max-width: 600px) {
+  .navLinkCountCards {
+    display: none;
+  }
+
+  .textLogo {
+    display: none;
+  }
+
+
+
+  h2 {
+    font-family: 'Montserrat',
+      sans-serif;
+    font-weight: 600 !important;
+  }
+
+  .headerThin {
+    >* {
+      flex: wrap;
+      flex-basis: 50%;
+    }
+
+    .leftSideNav {
+      display: flex;
+      align-items: center;
+    }
+
+    .rightSideNav {
+      display: flex;
+      align-items: center;
+      padding-right: 20px;
+    }
+  }
+
+  .navLinkCardCrusher {
+    font-size: 1.6rem !important;
+  }
+}
+
+@media (min-width: 600px) {
+  .headerThin {
+    padding: 20px;
+    padding-left: 80px;
+    padding-right: 60px;
+  }
+}

@@ -1,0 +1,178 @@
+// animations for adding/removing cards
+.cardz {
+    &.list-enter {
+        transform: translate3d(100vw, -100vh, 0);
+        transition: transform $card-enter-duration $card-deal-bezier;
+        transition-delay: 0.1s;
+
+        &[data-private="false"] {
+
+            .front,
+            .back {
+                transition: transform 2s $card-deal-bezier;
+                transition-delay: $card-flip-delay * 0.8;
+            }
+
+            .front {
+                transform: rotateY(179deg);
+            }
+
+            .back {
+                transform: rotateX(0) rotateY(0);
+            }
+        }
+
+        &.list-enter-active {
+            $baseTransform: translate3d(0, 0, 0);
+
+            &.H {
+                transform: #{$baseTransform} $card-rotate-hearts;
+            }
+
+            &.C {
+                transform: #{$baseTransform} $card-rotate-clubs;
+            }
+
+            &:nth-child(odd) {
+                transform: #{$baseTransform} $card-rotate-odd;
+            }
+
+            &:nth-child(even) {
+                transform: #{$baseTransform} $card-rotate-even;
+            }
+
+            &[data-private="false"] {
+                .front {
+                    transform: rotateX(0) rotateY(0);
+                    transition-delay: 2s;
+                    transition: transform 1s;
+                }
+
+                .back {
+                    transform: rotateY(-179deg);
+                    transition-delay: 2s;
+                    transition: transform 1s;
+                }
+            }
+        }
+    }
+
+    &.list-exit {
+        transform: translate3d(0, 0, 0);
+        transition: transform $card-enter-duration $card-deal-bezier;
+
+        &.list-exit-active {
+            transform: translate3d(0, -100vh, 0);
+        }
+    }
+}
+
+// card related but necessary to start from the
+// parent element to get the current context
+.hand {
+
+    // deal first two cards to dealer and player with a delay
+    &[data-dealing="true"] {
+        &[data-owner="dealer"] {
+            .cardz.list-enter {
+                &:first-child {
+                    transition-delay: .2s;
+
+                    .front,
+                    .back {
+                        transition-duration: 1s;
+                        transition-delay: $card-flip-delay + $card-deal-delay * 1;
+                    }
+                }
+
+                &:nth-child(2) {
+                    transition-delay: 1.2s;
+
+                    .front,
+                    .back {
+                        transition-delay: $card-flip-delay + ($card-deal-delay * 2);
+                    }
+                }
+            }
+        }
+
+        &[data-owner="player"] {
+            .cardz.list-enter {
+                &:first-child {
+                    transition-delay: 0s;
+
+                    .front,
+                    .back {
+                        transition-delay: $card-flip-delay;
+                    }
+                }
+
+                &:nth-child(2) {
+                    transition-delay: .6s;
+
+                    .front,
+                    .back {
+                        transition-delay: $card-flip-delay + ($card-deal-delay * 1);
+                    }
+                }
+            }
+        }
+    }
+
+    // add delay to rest of the dealer's card once player stands
+    &[data-owner="dealer"] {
+
+        .cardz.list-enter {
+            &:nth-child(3) {
+                transition-delay: 0.3s;
+            }
+
+            &:nth-child(4) {
+                transition-delay: 0.8s;
+            }
+
+            &:nth-child(5) {
+                transition-delay: 1.3s;
+            }
+
+            &:nth-child(6) {
+                transition-delay: 1.8s;
+            }
+
+            &:nth-child(7) {
+                transition-delay: 2.3s;
+            }
+
+            &:nth-child(8) {
+                transition-delay: 2.8s;
+            }
+
+            &:nth-child(9) {
+                transition-delay: 3.3s;
+            }
+
+            &:nth-child(11) {
+                transition-delay: 3.8s;
+            }
+
+            &:nth-child(12) {
+                transition-delay: 4.3s;
+            }
+        }
+
+
+
+        @for $i from 1 through 8 {
+
+            // .cardz.list-enter {
+            //     &:nth-child(#{$i+3}) {
+            //         transition-delay: 0.6s;
+            //     }
+            // }
+            .cardz.front,
+            .cardz.back {
+                transition-delay: 0.5s + ($i * $card-deal-delay);
+            }
+        }
+    }
+}

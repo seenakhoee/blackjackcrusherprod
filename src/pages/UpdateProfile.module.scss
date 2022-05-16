@@ -1,0 +1,95 @@
+@import './css/abstracts/hp-variables.scss';
+
+.preloader {
+  background: #fff url(./css/img/pink-loading.gif) no-repeat center center;
+  background-size: 10%;
+  opacity: .6;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  animation-name: removeLoader;
+  animation-duration: 1.4s;
+  animation-delay: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.container {
+  background: #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: auto;
+  padding-top: 140px;
+
+  .section {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .alertWidth {
+    width: 95%;
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 2rem;
+  }
+
+  .description {
+    width: 50%;
+  }
+
+  .info {
+    width: 50%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px .1px rgb(219, 219, 219);
+  }
+
+  hr {
+    width: 100%;
+    border: 0;
+    margin: 30px 0;
+    border-top: 1px solid #818488;
+  }
+
+  button {
+    text-align: right;
+    margin-top: 20px;
+  }
+
+  input {
+    background: #E8F0FE !important;
+    width: 100%;
+  }
+}
+
+@media (max-width: 510px) {
+  .section {
+    flex-direction: column;
+  }
+
+  .description {
+    width: 100% !important;
+  }
+
+  .info {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 580px) {
+  .container {
+    padding-top: 160px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    padding-top: 180px;
+  }
+}

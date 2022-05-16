@@ -1,0 +1,52 @@
+.trayContainer {
+  // making header stats flex
+  max-width: 40%;
+  height: auto;
+}
+
+.tray {
+  width: 64%;
+  min-width: 160px;
+  height: auto;
+}
+
+//
+
+.digitalDiscardBorder {
+  position: relative;
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 28%;
+  height: 150px;
+  background: rgba(0, 0, 0, .4);
+  border-top: 8px solid;
+  border-left: 8px solid;
+  border-bottom: 8px solid;
+  border-image: linear-gradient(135deg, #777, #000) 15;
+  border-radius: 5px 0px 0px 5px;
+
+}
+
+.deltCards {
+  position: absolute;
+  background-color: #eee;
+  bottom: 0;
+  width: 100%;
+  background: #ddd;
+}
+
+.halfMarker {
+  position: absolute;
+  background: #ddd;
+  height: 1px;
+  bottom: 49%;
+  width: 100%;
+  opacity: 0.2
+}
+
+@media (min-width: 800px) {
+  .digitalDiscardBorder {
+    width: 15%;
+    height: 200px;
+  }
+}

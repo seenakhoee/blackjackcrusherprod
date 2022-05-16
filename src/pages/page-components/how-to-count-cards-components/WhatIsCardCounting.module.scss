@@ -1,0 +1,298 @@
+@import '../../css/abstracts/hp-variables.scss';
+
+.sectionWhatIsCC {
+  padding-top: 180px;
+}
+
+.section {
+  padding-top: 60px;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.sectionLast {
+  padding-bottom: 80px;
+}
+
+.seafoamGreen {
+  background-color: #B8FFF2;
+  padding: 20px;
+  color: #000;
+  border-radius: 2px;
+  margin-bottom: 20px;
+
+  .paragraph {
+    font-size: 2.4rem;
+    font-weight: 600;
+  }
+
+  .bold {
+    font-weight: 900;
+  }
+}
+
+.headingPrimary {
+  color: $color-white;
+  text-transform: uppercase;
+
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  justify-content: center;
+  margin: 0 auto;
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background: #F3F2EF;
+    margin: 2px;
+    padding: 10px;
+    align-items: center;
+
+    :nth-child(2) {
+      text-align: right;
+    }
+
+    :nth-child(3) {
+      text-align: right;
+    }
+  }
+
+  .pTable {
+    width: 33%;
+    font-size: 2rem;
+  }
+
+  > :nth-child(1) {
+    background: #fff;
+  }
+}
+
+.headingSecondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: .2rem;
+  transition: all 1s;
+}
+
+.headingTertiary {
+  font-size: $default-font-size;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: 2rem;
+
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
+
+.customRow:not(:last-child) {
+  margin-bottom: 8rem;
+}
+
+.customRow {
+  max-width: 114rem;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 56.25em) {
+  .customRow {
+    max-width: 80rem;
+    padding: 0 3rem;
+  }
+}
+
+.card {
+  width: 100%;
+}
+
+.customCard {
+  height: auto;
+  max-width: 100%;
+  margin: 0 auto;
+  height: auto;
+  transition: all 3s ease;
+  width: 100%;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+  background-color: #fff;
+  padding-top: 40px;
+
+  &__details {
+    padding: 4rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto;
+
+      li {
+        text-align: left;
+        font-size: 2rem;
+        padding: 1rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid #ddd;
+        }
+      }
+    }
+  }
+
+
+
+
+
+  //@include respond(tab-port) {
+  @media only screen and (max-width: 56.25em),
+  only screen and (hover: none) {
+
+    height: auto;
+    border-radius: 3px;
+    background-color: $color-white;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+
+    &__side {
+      height: auto;
+      position: relative;
+      box-shadow: none;
+    }
+
+
+    &__details {
+      padding: 1rem 3rem;
+    }
+
+    // FRONT SIDE STYLING
+    &__cta {
+      position: relative;
+      top: 0%;
+      left: 0;
+      transform: translate(0);
+      width: 100%;
+      padding: 7rem 4rem 4rem 4rem;
+    }
+
+    &__price-box {
+      margin-bottom: 3rem;
+    }
+
+    &__price-value {
+      font-size: 4rem;
+    }
+  }
+
+}
+
+.btn {
+  margin-top: 40px;
+
+  &,
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 2.5rem 6rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .2s;
+    position: relative;
+    font-size: 2.6rem;
+
+    //Change for the <button> element
+    border: none;
+    cursor: pointer;
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+  }
+
+  &White {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  &Green {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+
+  &Orange {
+    background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+    color: $color-white;
+
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+  }
+
+  // &Animated {
+  //   animation: moveInBottom .5s ease-out .75s;
+  //   animation-fill-mode: backwards;
+  // }
+}
+
+a:hover {
+  color: #fff;
+}
+
+.btnText {
+
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+    transition: all .2s;
+  }
+
+  &:active {
+    box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+    transform: translateY(0);
+  }
+}

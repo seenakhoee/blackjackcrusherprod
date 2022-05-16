@@ -1,0 +1,150 @@
+@import './css/abstracts/hp-variables.scss';
+
+.sectionBook {
+  padding: 10rem 0;
+  background-image: linear-gradient(0deg, rgba(21, 4, 32, 0.94) 0%, rgba(2, 83, 88, 0.99) 88%);
+  height: 100%;
+  opacity: 1px;
+  animation-name: fadein;
+  animation-duration: .22s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  max-width: 400px;
+  width: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.book {
+  background-image: linear-gradient(0deg,
+      rgba(#fff, .9) 0%,
+      rgba(#fff, .9) 100%,
+      transparent 50%);
+  background-size: 100%;
+  box-shadow: 0 1.5rem 4rem rgba(#000, .2);
+
+  &__form {
+    padding: 3rem;
+  }
+}
+
+@media(min-width: 350px) {
+  .book__form {
+    padding: 5rem;
+  }
+}
+
+.center__button {
+  display: flex;
+  justify-content: center;
+}
+
+.removeGutter {
+  --bs-gutter-x: 0px !important;
+}
+
+.form__inputwidth {
+  width: 100% !important;
+}
+
+.preloader {
+  background: #fff url(./css/img/pink-loading.gif) no-repeat center center;
+  background-size: 10%;
+  opacity: .6;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  animation-name: removeLoader;
+  animation-duration: 1.4s;
+  animation-delay: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.btn {
+
+  &,
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .2s;
+    position: relative;
+    font-size: $default-font-size;
+
+    //Change for the <button> element
+    border: none;
+    cursor: pointer;
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+  }
+
+  &White {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  &Green {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+  }
+}
+
+.btnText {
+
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+    transition: all .2s;
+  }
+
+  &:active {
+    box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+    transform: translateY(0);
+  }
+}

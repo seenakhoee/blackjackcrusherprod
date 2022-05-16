@@ -1,0 +1,34 @@
+@import 'variables.scss';
+
+.headerInfo {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+// header component
+.headerInfo {
+  p, .timer{
+    font-size: 24px;
+    padding-right: 10px;
+    text-align: right;
+  }
+
+  .penStat {
+    font-size: 40px;
+  }
+}
+
+
+@media #{$phone} {
+  .headerInfo {
+    p, .timer {
+      font-size: 18px;
+    }
+
+    .penStat {
+      font-size: 22px;
+    }
+  }
+}

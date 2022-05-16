@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+
+.simulationsContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.betSpreadContainer {
+  display: flex;
+  flex-direction: column;
+
+
+
+  .tcContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 10px;
+
+    >input {
+      margin-top: 0px;
+      width: 70%;
+    }
+
+    >h3 {
+      padding: 0px;
+      margin: 0px;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.simContainer {
+  padding: 40px;
+  padding-top: 180px;
+  color: rgb(0, 0, 0);
+
+  p {
+    font-size: 1.6rem;
+    color: #4a4a4a;
+    font-weight: 500;
+  }
+}
+
+.mainContainer {
+  overflow: scroll;
+  overflow-x: auto;
+}
+
+.buttonContainer {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin: 28px;
+  margin-top: 20px;
+}
+
+.rulesSection {
+  display: flex;
+  // align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 10px;
+
+  &:first-child {
+    margin-top: 0px;
+  }
+
+  h3 {
+    padding: 0px;
+    margin: 0px;
+  }
+
+  >input {
+    margin-top: 0px !important;
+  }
+}
+
+.rulesSectionMain {
+  display: flex;
+
+  >* {
+    flex-basis: 100%;
+  }
+}
+
+.tableConatiner {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: nowrap;
+  color: #000;
+  text-align: center;
+  margin-top: 20px;
+  min-width: 690px;
+
+  >div {
+    flex-basis: 100%;
+    border: 1px solid rgb(217, 217, 217);
+    border-right: none;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:last-child {
+      border-right: 1px solid rgb(217, 217, 217);
+    }
+
+    &:first-child {
+      border-top: none;
+      border-left: none;
+    }
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+}
+
+.tableRow {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: nowrap;
+  color: #000;
+  align-content: stretch;
+  text-align: center;
+  min-width: 690px;
+
+  >div {
+    border: 1px solid rgb(217, 217, 217);
+    border-right: none;
+    border-top: none;
+    flex-basis: 100%;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:last-child {
+      border-right: 1px solid rgb(217, 217, 217);
+    }
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+}
+
+.tableRulesContainer {
+  width: 50%;
+
+  div:first-child {
+    padding-top: 20px;
+  }
+}
+
+.betSpreadContainer {
+  h2:first-child {
+    padding-top: 20px;
+    font-size: 1.75rem;
+  }
+}
+
+.tableRow:hover {
+  background-color: #eee;
+}
+
+.newSimModal {
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  background-image: linear-gradient(130deg, #ff78185f,
+      #00ffaa29 41.07%,
+      #97313336 76.05%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  z-index: 100000;
+  border: 1px solid #000;
+
+  h1:first-child {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000;
+  }
+
+  input {
+    margin-top: 15px;
+  }
+}
+
+.newSimModalBackdrop {
+  background-color: rgb(0, 0, 0);
+  opacity: .3;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 10000;
+}
+
+.links {
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.red {
+  color: red !important;
+  font-weight: 600 !important;
+}
+
+.green {
+  color: green !important;
+  font-weight: 600 !important;
+}
+
+.btn {
+
+  &,
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.7rem 1.3rem;
+    display: inline-block;
+    border-radius: .4rem;
+    transition: all .2s;
+    position: relative;
+    font-size: 1.5rem;
+
+    //Change for the <button> element
+    border: none;
+    cursor: pointer;
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba(#000, .2);
+  }
+
+  &White {
+    background-color: #fff;
+    color: #777;
+    border: 1px solid rgb(187, 187, 187);
+
+    &::after {
+      background-color: #fff;
+    }
+
+    &White:hover {
+      color: #777 !important;
+    }
+  }
+
+  &Orange {
+    background-image: linear-gradient(to right bottom, #ffb900, #ff7730);
+    color: #fff;
+
+    &::after {
+      background-image: linear-gradient(to right bottom, #ffb900, #ff7730);
+    }
+  }
+
+  &Orange:hover {
+    color: #fff;
+  }
+
+  &Green {
+    background-color: #3F9D85;
+    color: #000;
+
+    &::after {
+      background-color: #3F9D85;
+    }
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: .4rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+  }
+
+  // &Animated {
+  //   animation: moveInBottom .5s ease-out .75s;
+  //   animation-fill-mode: backwards;
+  // }
+}
+
+.btnText {
+
+  &:link,
+  &:visited {
+    font-size: 1.6rem;
+    color: #3F9D85;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid #3F9D85;
+    padding: 3px;
+    transition: all .2s;
+  }
+
+  &:active {
+    box-shadow: 0 .5rem 1rem rgba(#000, .15);
+    transform: translateY(0);
+  }
+}
+
+.firstChildTcContainer {
+  margin-top: 0px !important;
+}
+
+.preloader {
+  background: #fff url(../pages/css/img/pink-loading.gif) no-repeat center center;
+  background-size: 10%;
+  opacity: .6;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  z-index: 1000000;
+  animation-name: removeLoader;
+  animation-duration: 1.4s;
+  animation-delay: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.deleteAllBtn {
+  margin-top: 10px;
+}
+
+.deleteAllBtn:hover {
+  color: #777 !important;
+}

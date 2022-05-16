@@ -1,0 +1,653 @@
+@import '../../css/abstracts/hp-variables.scss';
+
+/*==================== GOOGLE FONTS ====================*/
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Rubik&display=swap');
+@import url('https://unicons.iconscout.com/release/v3.0.6/css/line.css');
+
+/*==================== VARIABLES CSS ====================*/
+:root {
+  /*========== Colors ==========*/
+  /* Change favorite color - Blue 210 - Purple 250 - Green 142 - Pink 340*/
+  --hue-color: 210;
+
+  /* HSL color mode */
+  --first-color: hsl(var(--hue-color), 96%, 54%);
+  --first-color-light: hsl(var(--hue-color), 96%, 69%);
+  --first-color-alt: hsl(var(--hue-color), 96%, 37%);
+  --first-color-lighter: hsl(var(--hue-color), 14%, 96%);
+  --title-color: hsl(var(--hue-color), 24%, 15%);
+  --text-color: hsl(var(--hue-color), 12%, 35%);
+  --text-color-light: hsl(var(--hue-color), 12%, 65%);
+  --white-color: #FFF;
+  --body-color: hsl(var(--hue-color), 100%, 99%);
+  --container-color: #FFF;
+
+  /*========== Font and typography ==========*/
+  --body-font: 'Lato', sans-serif;
+  --pricing-font: 'Rubik', sans-serif;
+
+  --biggest-font-size: 3rem;
+  --normal-font-size: .938rem;
+  --h2-font-size: 1.25rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+  --tiny-font-size: .625rem;
+
+  // @media screen and (min-width: 968px) {
+  //   --biggest-font-size: 3rem;
+  //   --h2-font-size: 1.5rem;
+  //   --normal-font-size: 1rem;
+  //   --small-font-size: .875rem;
+  //   --smaller-font-size: .813rem;
+  //   --tiny-font-size: .688rem;
+  // }
+
+  /*========== Margenes Bottom ==========*/
+  --mb-0-25: .25rem;
+  --mb-0-5: .5rem;
+  --mb-1: 1rem;
+  --mb-1-25: 1.25rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+}
+
+/*==================== BASE ====================*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*==================== REUSABLE CSS CLASSES ====================*/
+.container {
+  max-width: 90%;
+  margin-left: var(--mb-1-5);
+  margin-right: var(--mb-1-5);
+  margin: 0 auto !important;
+}
+
+.card__listDescription {
+  color: rgb(86, 86, 86);
+  font-weight: 500;
+}
+
+.grid {
+  display: grid;
+
+  ul {
+    padding: 0px;
+  }
+}
+
+/*==================== CARD PRICING ====================*/
+.card {
+  padding: 3rem 0;
+
+  &__container {
+    gap: 3rem 1.25rem;
+  }
+
+  &__content {
+    position: relative;
+    background-color: var(--container-color);
+    padding: 3rem 3rem 2rem;
+    border-radius: 1.75rem;
+    box-shadow: 0 12px 24px hsla(var(--hue-color), 61%, 16%, .10);
+    transition: .4s;
+
+    &:hover {
+      box-shadow: 0 16px 24px hsla(var(--hue-color), 61%, 16%, .15);
+    }
+  }
+
+  &__header {
+    &Img {
+      width: 30px;
+      height: 30px;
+    }
+
+    &Circle {
+      width: 40px;
+      height: 40px;
+      background-color: var(--first-color-lighter);
+      border-radius: 50%;
+      margin-bottom: var(--mb-1);
+      place-items: center;
+    }
+
+    &Subtitle {
+      display: block;
+      font-size: 1.75rem;
+      color: var(--text-color-light);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      font-weight: 400;
+    }
+
+    &Title {
+      font-size: var(--biggest-font-size);
+      color: var(--title-color);
+      margin-bottom: var(--mb-2);
+      font-weight: 600;
+    }
+  }
+
+  &__pricing {
+    position: absolute;
+    background: #53bb98;
+    width: 95px;
+    height: 130px;
+    right: 1.5rem;
+    top: -1rem;
+    padding-top: 1.25rem;
+    text-align: center;
+    // text-decoration: line-through;
+    text-decoration-color: #fff;
+    text-decoration-thickness: 3px;
+
+
+    &Number {
+      font-family: var(--pricing-font);
+      font-size: 5rem;
+      margin-bottom: -20px !important;
+      margin-top: 5px !important;
+    }
+
+    &Symbol {
+      font-size: 3rem;
+    }
+
+    &Month {
+      display: block;
+      font-size: 2rem;
+    }
+
+    &Number,
+    &Month {
+      color: var(--white-color);
+    }
+
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+    }
+
+    &::after {
+      width: 100%;
+      height: 14px;
+      background-color: var(--white-color);
+      left: 0;
+      bottom: 0;
+      clip-path: polygon(0 100%, 50% 0, 100% 100%);
+    }
+
+    &::before {
+      width: 14px;
+      height: 16px;
+      background-color: #1D293C;
+      top: 0;
+      left: -14px;
+      clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    }
+  }
+
+  &__list {
+    row-gap: .5rem;
+    margin-bottom: var(--mb-2);
+    font-size: 2rem;
+
+    &Item {
+      display: flex;
+      align-items: center;
+    }
+
+    &Icon {
+      font-size: 2.4rem;
+      color: #2E7E7E;
+      margin-right: var(--mb-0-5);
+    }
+  }
+
+  &__button {
+    padding: 1.25rem;
+    border: none;
+    font-size: 2rem;
+    border-radius: .5rem;
+    background: #53bb98;
+    color: var(--white-color);
+    cursor: pointer;
+    transition: .4s;
+
+    &:hover {
+      box-shadow: 0 12px 24px hsla(var(--hue-color), 97%, 54%, .2);
+    }
+  }
+}
+
+
+/*==================== MEDIA QUERIES ====================*/
+/* For small devices */
+@media screen and (max-width: 320px) {
+  .container {
+    margin-left: var(--mb-1);
+    margin-right: var(--mb-1);
+  }
+
+  .card__content {
+    padding: 2rem 1.25rem;
+    border-radius: 1rem;
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 568px) {
+  .container {
+    max-width: 80%;
+  }
+
+  .card {
+    &__container {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    &__content {
+      grid-template-rows: repeat(1, max-content);
+    }
+
+    &__button {
+      align-self: flex-end;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .pricingContainer {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+
+@media (min-width: 900px) {
+  .card__pricingNumber {
+    margin-top: -10px !important;
+  }
+}
+
+/* For large devices */
+@media (min-width: 968px) {
+  .container {
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .card {
+    align-items: center;
+
+    &__container {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    &__header-circle {
+      margin-bottom: var(--mb-1-25);
+    }
+
+    &__header-subtitle {
+      font-size: var(--small-font-size);
+    }
+  }
+}
+
+@media (min-width: 1100px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 640px;
+  }
+}
+
+.pricingContainer {
+  width: 100%;
+  background-image: linear-gradient(0deg, rgba(21, 4, 32, 0.94) 0%, rgba(2, 83, 88, 0.99) 88%);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  padding: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.pricingSection {
+  margin: 140px;
+  width: 100%;
+}
+
+.customRow:not(:last-child) {
+  margin-bottom: 8rem;
+}
+
+.customRow {
+  max-width: 114rem;
+  margin: 0 auto;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.boxContainer {
+  display: flex;
+  font-family: 'proxima-nova',
+    sans-serif;
+}
+
+.emptyWidth {
+  width: 32rem;
+}
+
+.pricingBox {
+  width: 34rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #2078EF;
+  color: #fff;
+  padding: 20px;
+  border-top: 1px rgba(225, 255, 255, 0.25) solid;
+  box-shadow: 0px 10px 10px rgb(0 0 0 / 50%);
+}
+
+.features {
+  width: 32rem;
+  text-align: right;
+
+  p {
+    border-top: 1px solid #ddd;
+    color: #353740;
+    font-size: 1.8rem;
+    font-weight: 400;
+  }
+
+  :first-child {
+    border-top: none;
+    font-size: 2.8rem;
+  }
+}
+
+.checkMark {
+  width: 34rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #353740;
+  font-size: 1.8rem;
+
+  div {
+    border-top: 1px solid #ddd;
+    width: 100%;
+    text-align: center;
+  }
+
+  :first-child {
+    border-top: none;
+    font-size: 2.8rem;
+  }
+}
+
+.priceLabel {
+  font-size: 2.6rem;
+  font-weight: 600;
+}
+
+.priceAmount {
+  font-size: 9rem;
+  font-weight: 300;
+}
+
+.priceMonth {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 2.6rem;
+  margin-top: -30px;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 56.25em) {
+  .customRow {
+    max-width: 80rem;
+    padding: 0 3rem;
+  }
+}
+
+.btn {
+  margin-top: 40px;
+
+  &,
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 2.5rem 6rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .2s;
+    position: relative;
+    font-size: 2.6rem;
+
+    //Change for the <button> element
+    border: none;
+    cursor: pointer;
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+  }
+
+  &White {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  &Green {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+
+  &Orange {
+    background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+    color: $color-white;
+
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+
+  &GreenBlue {
+    background: linear-gradient(90deg, #1f78ef 0%, #3eb9b4 100%);
+
+    &::after {
+      background: linear-gradient(90deg, #1f78ef 0%, #3eb9b4 100%)
+    }
+  }
+
+  &GreenV2 {
+    background-color: #3eb9b4;
+
+    &::after {
+      background-color: #3eb9b4;
+    }
+
+    color: #fff;
+    text-shadow: 0px 1px 2px rgb(0 0 0 / 51%);
+    box-shadow: 0 0 10px rgb(0 0 0 / 0%);
+    padding: 0.5em 1em !important;
+    margin: 0 10px;
+    border-radius: 7px !important;
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+  }
+
+  // &Animated {
+  //   animation: moveInBottom .5s ease-out .75s;
+  //   animation-fill-mode: backwards;
+  // }
+}
+
+a:hover {
+  color: #fff;
+}
+
+.btnText {
+
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+    transition: all .2s;
+  }
+
+  &:active {
+    box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+    transform: translateY(0);
+  }
+}
+
+.limitedTimeOffer {
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-around;
+  justify-content: center;
+  height: 200px;
+  width: 80%;
+  padding: 5px 20px;
+  // background-color: rgb(255, 237, 155);
+  background-image: linear-gradient(to right bottom, #ffb900, #ff7730);
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 20px 20px 0px 0px;
+  // box-shadow: 0 12px 24px hsla(var(--hue-color), 61%, 16%, 0.1);
+  font-family: var(--pricing-font);
+  // color: #baad72;
+  color: #fff;
+  font-size: 2.4rem;
+  box-shadow: 0 1.5rem 3rem rgba(#000, .85);
+  // letter-spacing: .00000001em;
+
+  // p:nth-child(1) {
+  //   padding-top: 10px;
+  // }
+
+  p:nth-child(1) {
+    // text-shadow: .005em .005em rgba(70, 53, 3, 0.194),  -0.005em -0.005em rgba(68, 68, 68, 0.676);
+    font-size: 3.6rem;
+    padding: 0px;
+    margin: 0px;
+
+    span {
+      font-size: 2.8rem;
+    }
+  }
+
+  p:nth-child(2) {
+    // text-shadow: .005em .005em rgba(70, 53, 3, 0.194),  -0.005em -0.005em rgba(68, 68, 68, 0.676);
+    font-size: 5rem;
+    padding: 0px;
+    margin: 0px;
+
+    span {
+      font-size: 2.8rem;
+    }
+  }
+
+}
+
+.card__listItem {
+  padding-top: 30px;
+}
+
+.card__listItem:last-child {
+  padding-bottom: 20px;
+}
+
+.card__listItem:first-child {
+  border-top: 2px solid rgb(223, 223, 223);
+  padding-top: 30px;
+}
+
+@media (max-width: 450px) {
+  .container {
+    max-width: 100%;
+  }
+
+  .limitedTimeOffer {
+    p:nth-child(1) {
+      // text-shadow: .005em .005em rgba(70, 53, 3, 0.194),  -0.005em -0.005em rgba(68, 68, 68, 0.676);
+      font-size: 3.0rem;
+      padding: 0px;
+      margin: 0px;
+
+      span {
+        font-size: 2.8rem;
+      }
+    }
+
+    p:nth-child(2) {
+      // text-shadow: .005em .005em rgba(70, 53, 3, 0.194),  -0.005em -0.005em rgba(68, 68, 68, 0.676);
+      font-size: 4rem;
+      padding: 0px;
+      margin: 0px;
+
+      span {
+        font-size: 2.8rem;
+      }
+    }
+  }
+}

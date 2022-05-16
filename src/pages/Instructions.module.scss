@@ -1,0 +1,64 @@
+.main {
+  background: rgb(242, 242, 242);
+}
+
+.fixed {
+  padding-top: 100px;
+  position: fixed;
+  width: 10% !important;
+}
+
+.instructions {
+  padding-top: 100px;
+
+  section {
+    padding-top: 40px;
+  }
+
+  section:first-child{
+    padding-top: 100px;
+  }
+
+  section:last-child {
+    padding-bottom: 40px;
+  }
+
+  p {
+    color: rgba(0, 0, 0, 0.737)
+  }
+}
+
+@media (min-width:800px){
+  .instructions {
+    padding-top: 40px;
+    position: relative;
+    left: 34%;
+    width: 65%;
+  }
+}
+
+
+
+@media (min-width: 800px) {
+  .fixed {
+    width: 40% !important;
+  }
+}
+
+@media (min-width: 1020px) {
+  .fixed {
+    width: 30% !important;
+  }
+}
+
+@media (min-width: 1530px) {
+  .fixed {
+    width: 22% !important;
+  }
+}
+
+@media (min-width: 1800px) {
+  .fixed {
+    width: 18% !important;
+  }
+}

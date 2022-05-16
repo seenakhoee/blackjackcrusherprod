@@ -1,0 +1,84 @@
+.composition__photo {
+  box-shadow: 0px;
+}
+
+.composition {
+  position: relative;
+  transform: translate(20%);
+  z-index: 2000;
+  top: 60px;
+}
+
+.about {
+  padding: 20px;
+  font-family: 'Montserrat',
+    sans-serif;
+  color: #000;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  p {
+    font-size: 2rem;
+    padding-top: 15px;
+  }
+}
+
+
+.iphoneSize {
+  max-width: 200px !important;
+  width: 30% !important;
+  height: auto;
+}
+
+.ipadSize {
+  max-width: 440px !important;
+  width: 60% !important;
+  height: auto;
+}
+
+.macBookProSize {
+  max-width: 500px !important;
+  width: 60% !important;
+  height: auto;
+}
+
+.imageContainer {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+  .container {
+    display: flex;
+    padding: 0px 0px;
+    height: 80vh
+  }
+
+  .composition {
+    transform: translate(10%);
+    top: 0px;
+  }
+
+  .description {
+    width: 40%
+  }
+
+  .imageContainer {
+    width: 60%;
+    padding-left: 40px;
+    display: block;
+    padding-right: 60px;
+  }
+
+  .about {
+    padding: 60px;
+  }
+
+  .description>div:last-child {
+    margin-top: 40px !important;
+  }
+
+}

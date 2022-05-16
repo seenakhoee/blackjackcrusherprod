@@ -1,0 +1,45 @@
+.main {
+  display: block;
+  padding: 20px;
+  padding-top: 160px;
+  color: #4a4a4a;
+
+
+  >div {
+    flex-basis: 100%;
+    padding: 20px;
+    padding-top: 40px;
+  }
+
+  p {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+}
+
+.discordWidget {
+  padding-top: 20px !important;
+  text-align: center;
+
+  >iframe {
+    height: 400px;
+  }
+}
+
+.card {
+  width: 100%;
+}
+
+@media (min-width: 700px) {
+  .main {
+    display: flex;
+  }
+
+  >div {
+    padding: 40px;
+    padding-top: 0px;
+  }
+}

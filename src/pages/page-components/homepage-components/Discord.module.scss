@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100&display=swap');
+
+.supportSection {
+  font-family: 'Montserrat',
+    sans-serif;
+  color: #000;
+  padding-top: 120px;
+  padding-bottom: 80px;
+  padding-left: 40px;
+  padding-right: 40px;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 2rem;
+  }
+
+  .discordWidget {
+    padding-top: 40px;
+    text-align: center;
+
+    >iframe {
+      width: 250px;
+      height: 370px;
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .supportSection {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin: 0 auto;
+    padding-top: 140px;
+    padding-bottom: 80px;
+
+    >* {
+      flex-basis: 100%;
+    }
+
+    .discordWidget {
+      text-align: center;
+
+      >iframe {
+        width: 350px;
+        height: 500px;
+      }
+    }
+  }
+}
+
+.techSupport>div:last-child {
+  margin-top: 40px !important;
+}
