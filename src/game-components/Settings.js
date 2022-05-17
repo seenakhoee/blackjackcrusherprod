@@ -20,7 +20,7 @@ class Settings extends React.Component<any, any>
     super(props);
 
     this.state = {
-      // Illustration 18 + Fab 4
+      // Illustrious 18 + Fab 4
       checkDeviations: true,
 
       // Check All Deviations
@@ -221,7 +221,7 @@ class Settings extends React.Component<any, any>
                       <p className="statsTitle">Focus Area</p>
                       <Form.Select value={mode} onChange={this.updateMode} aria-label="Default select example">
                         <option value={0}>Default</option>
-                        <option value={3}>Illustration 18</option>
+                        <option value={3}>Illustrious 18</option>
                         <option value={1}>Pairs</option>
                         <option value={4}>Soft Totals</option>
                         <option value={5}>Hard Totals</option>
@@ -247,9 +247,9 @@ class Settings extends React.Component<any, any>
                   </Form.Select> */}
                   <Row>
                     <Col>
-                      <p className="statsTitle">Deck Penetration</p>
+                      <p className="statsTitle">How Many Decks Are Delt From The Shoe?</p>
                       <Form.Select value={penetration} onChange={this.updatePen} aria-label="Default select example">
-                        <option value={0.80}>80%</option>
+                        <option value={0.87}>87%</option>
                         <option value={0.75}>75%</option>
                         <option value={0.62}>62%</option>
                         <option value={0.50}>50%</option>

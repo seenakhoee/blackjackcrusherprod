@@ -279,7 +279,7 @@ export default class Shoe extends GameObject {
 
   _setupGameMode(): void {
     // First
-    // looks like over here, we returning the illustration chart map and changing it to an array.
+    // looks like over here, we returning the illustrious chart map and changing it to an array.
     // then picking a random one index from the array, and testing against that.
 
     let mode;

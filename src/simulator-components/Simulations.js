@@ -249,8 +249,8 @@ export default function Simulations() {
               <h3>Player Strategy</h3>
               <select value={playerStrategy} onChange={e => setPlayerStrategy(JSON.parse(e.target.value))}>
                 <option value={1}>Hilo Basic Strategy</option>
-                <option value={2}>Hilo Illustration18</option>
-                <option value={3}>Hilo Illustration18 + Fab4</option>
+                <option value={2}>Hilo Illustrious 18</option>
+                <option value={3}>Hilo Illustrious 18 + Fab4</option>
               </select>
             </div>
             <div className={styles.rulesSection}>
@@ -305,7 +305,7 @@ export default function Simulations() {
             </div>
             <div className={styles.rulesSection}>
 
-              <h3>Deck Penetration (%)</h3>
+              <h3>How Many Decks Are Delt From The Shoe (%)</h3>
               <input type="number"
                 onChange={e => validateInput(parseInt(e.target.value), 100, setPenetration)}
                 value={penetration}

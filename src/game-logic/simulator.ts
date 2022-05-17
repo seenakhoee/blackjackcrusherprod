@@ -457,7 +457,6 @@ export default class Simulator {
       }
     }
 
-    console.log(betHistory, 'bh')
     bankrollVariance /= bankrollValues - 1;
 
     const amountEarned = this.game.player.balance - bankrollStart;
@@ -467,8 +466,6 @@ export default class Simulator {
 
     // TODO: Make RoR configurable.
     const riskOfRuin = this.settings.riskOfRuin / 100;
-
-    console.log(riskOfRuin, 'ror')
 
     let results = {
       amountEarned,
@@ -491,7 +488,6 @@ export default class Simulator {
       timeElapsed: Date.now() - startTime,
     };
 
-    console.log(results, 'results')
     return results;
   }
 }

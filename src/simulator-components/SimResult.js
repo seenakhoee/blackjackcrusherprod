@@ -26,10 +26,10 @@ export default function SimResult({ test }) {
         return "Hilo Basic Strategy"
         break;
       case 2:
-        return "Hilo Illustration 18"
+        return "Hilo Illustrious 18"
         break;
       case 3:
-        return "Hilo Illustration 18 + Fav 4"
+        return "Hilo Illustrious 18 + Fav 4"
         break;
       default:
         break;
@@ -44,9 +44,9 @@ export default function SimResult({ test }) {
       <div className={styles.simResultContainer}>
         <h1>Simulation #{id} Results</h1>
         <h3>Created on {new Date().toDateString()}</h3>
-        <p className={styles.firstChild}><span>Player Straetgy  : </span>{getPlayerStrategy()}</p>
+        <p className={styles.firstChild}><span>Player Strategy  : </span>{getPlayerStrategy()}</p>
         <p><span>Table Rules : </span>{result.tableRules}</p>
-        <p><span>Deck Penetration  : </span>{result.penetration * 100}%</p>
+        <p><span>How Many Decks Are In The Shoe : </span>{result.penetration * 100}%</p>
         <p><span>Bet Spread  : </span>{formatBetSpread()}</p>
 
         <span className={styles.backButton}><Link to='/simulations'>Back To Simulations Overview</Link></span>
