@@ -18,7 +18,7 @@ export const settings: {} = {
   // Can be one of 'default', 'pairs', 'uncommon', 'illustrious18'. If the mode
   // is set to 'illustrious18', `checkDeviations` will be forced to true.
 
-  // TODO: Fix mode config setting.
+  // TODO: Fix mode config settingamez.
   mode: GameMode.Default,
   countingSystem: CountingSystem.HiLo,
   debug: false,
@@ -71,7 +71,7 @@ function stepGame(game: any, playerInputReader: any, input: any) {
   return new Promise((resolve) => playerInputReader.readInput(resolve));
 }
 
-export async function runGame(game: any, addListner) {
+export async function runGame(game: any, addDealInputListner, addKeyP) {
   game.betAmount = 10 * 100;
 
   const playerInputReader = new PlayerInputReader();
@@ -87,103 +87,113 @@ export async function runGame(game: any, addListner) {
     input = await stepGame(game, playerInputReader, input);
 
     if (game.state.step === GameStep.WaitingForNewGameInput) {
-      if (addListner) {
-        addListner()
+      if (addDealInputListner) {
+        console.log(addKeyP, 'addKeyP')
+        addDealInputListner(game, addKeyP)
       }
       return game;
     }
   }
 }
 
-async function hello() {
-  let g = await runGame(game);
 
-  function askForPopup() {
-    return new Promise((resolve) => {
-      game.on(Event.UserInput, (name, value) => {
-        // if value of showCountPopup not true
-        // then resolve and continue
-        if (!value) {
-          document.body.addEventListener('keypress', keypressHandler);
-          document.body.addEventListener('click', clickHandler);
-          resolve()
-        }
-      })
-    })
-
-  }
-
-  async function handlerLogic() {
-    g.removeCards();
-
-    if ((g.state.round !== 0) && g.askForCountPopup() && !g.state.userInputTC) {
-      g.emit(Event.UserInput, 'showCountPopup', true)
-
-      return await askForPopup()
-    }
-    g.state.userInputTC = false;
-
-    g.state.step = GameStep.Start
-    runGame(g, addListner);
-
-    g.showDealButton = false;
-    g.emit(Event.Change, 'showDealButton', g.showDealButton)
-  }
-
-  async function keypressHandler(event: KeyboardEvent) {
-    const action = actionDataKeyToCorrectMove(event.key);
-
-    if (!g.dealInput(action)) {
-      return
-    }
-
-    if (g.state.step === GameStep.WaitingForNewGameInput) {
-      handlerLogic()
-      document.body.removeEventListener('keypress', keypressHandler);
-    }
-  }
-
-  const clickHandler = (event: Event) => {
-    if (!(event.target instanceof HTMLElement)) {
-      return;
-    }
-    const action = actionDataKeyToCorrectMove(
-      event.target?.dataset.action ?? ''
-    );
-
-    if (action) {
-      if (g.state.step === GameStep.WaitingForNewGameInput) {
-        handlerLogic()
-        document.body.removeEventListener('click', clickHandler);
+function askForPopup(gamez, addKeyP) {
+  return new Promise((resolve) => {
+    game.on(Event.UserInput, (name, value) => {
+      // if value of showCountPopup not true
+      // then resolve and continue
+      if (!value) {
+        document.body.addEventListener('keypress', addKeyP);
+        document.body.addEventListener('click', clickHandler);
+        resolve()
       }
-    }
-  };
+    })
+  })
+}
 
-  // re-initiate event handler
-  const addListner = () => {
-    // adding event handler for Deal with setTimeout
+async function showCountPopup(gamez, addKeyP) {
+  gamez.removeCards();
 
-    window.setTimeout(() => {
-      document.body.addEventListener('keypress', keypressHandler);
-      document.body.addEventListener('click', clickHandler);
+  // check whether to show
+  if ((gamez.state.round !== 0) && gamez.askForCountPopup() && !gamez.state.userInputTC) {
+    gamez.emit(Event.UserInput, 'showCountPopup', true)
 
-      g.showDealButton = true;
-      g.emit(Event.Change, 'showDealButton', g.showDealButton)
-    }, 1300)
+    // wait for user input
+    return await askForPopup(gamez, addKeyP)
   }
 
-  if (g.state.round === 0) {
-    // first round, show the deal button
+  // reset userInput property continue running Game
+  gamez.state.userInputTC = false;
+  gamez.state.step = GameStep.Start
 
-    document.body.addEventListener('keypress', keypressHandler);
-    document.body.addEventListener('click', clickHandler);
+  runGame(gamez, addDealInputListner, addKeyP);
 
-    // g.showDealButton = true;
-    g.emit(Event.Change, 'userInputSubmitted', true)
-  } else {
-    // after - add setTimeout / evenlistener to finish dealing
-    addListner()
+  gamez.showDealButton = false;
+  gamez.emit(Event.Change, 'showDealButton', gamez.showDealButton)
+}
+
+async function keypressHandler(event: KeyboardEvent, gamez, addKeyP) {
+  const action = actionDataKeyToCorrectMove(event.key);
+
+  if (!gamez.dealInput(action)) {
+    return
+  }
+
+  if (gamez.state.step === GameStep.WaitingForNewGameInput) {
+    showCountPopup(gamez, addKeyP)
+    document.body.removeEventListener('keypress', addKeyP);
+  }
+}
+
+const clickHandler = (event: Event, gamez) => {
+  if (!(event.target instanceof HTMLElement)) {
+    return;
+  }
+  const action = actionDataKeyToCorrectMove(
+    event.target?.dataset.action ?? ''
+  );
+
+  if (action) {
+    if (gamez.state.step === GameStep.WaitingForNewGameInput) {
+      showCountPopup(gamez)
+      document.body.removeEventListener('click', clickHandler);
+    }
   }
 };
 
-hello()
+// re-initiate event handler
+function addDealInputListner(gamez, addKeyP) {
+  // adding event handler for Deal with setTimeout
+  window.setTimeout((gamez, addKeyP) => {
+    document.body.addEventListener('keypress', addKeyP);
+    document.body.addEventListener('click', (e) => {
+      clickHandler(e, gamez)
+    });
+    gamez.showDealButton = true;
+    gamez.emit(Event.Change, 'showDealButton', gamez.showDealButton)
+  }, 1300, gamez, addKeyP)
+}
+
+async function startGame() {
+  let gamez = await runGame(game);
+
+  function addKeyP(e) {
+    keypressHandler(e, gamez, addKeyP)
+  }
+
+  if (gamez.state.round === 0) {
+    // first round, show the deal button
+    document.body.addEventListener('keypress', addKeyP);
+    document.body.addEventListener('click', (e) => {
+      clickHandler(e, gamez)
+    });
+
+    // gamez.showDealButton = true;
+    gamez.emit(Event.Change, 'userInputSubmitted', true)
+  } else {
+    // after - add setTimeout / evenlistener to finish dealing
+    addDealInputListner(gamez, addKeyP)
+  }
+};
+
+startGame()

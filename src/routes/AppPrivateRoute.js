@@ -22,7 +22,7 @@ export default function PrivateRoute({ component: Component, ...rest }) {
         }
         //if logged & paid return app
         if (userSubscriptionStatus === 'trialing' || userSubscriptionStatus === 'active') {
-          console.log(game, 'game in route')
+
           game.resetState()
           return <Component game={game} {...props} {...rest} />
         }

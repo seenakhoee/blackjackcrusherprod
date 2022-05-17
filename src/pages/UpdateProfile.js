@@ -27,6 +27,7 @@ export default function UpdateProfile() {
     setLoading(styles.preloader)
     firebase.functions().httpsCallable('ext-firestore-stripe-payments-createPortalLink')({ returnUrl: window.location.origin })
       .then((result) => {
+        console.log(result, 'result')
         window.location.assign(result.data.url);
       })
       .catch((err) => {

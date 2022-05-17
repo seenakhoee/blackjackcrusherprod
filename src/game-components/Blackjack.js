@@ -134,7 +134,6 @@ class Blackjack extends React.Component<any, any>
     })
 
     this.props.game.on(Event.Change, (name, value) => {
-      console.log(name, value, 'what is this')
       // In a real app, this will likely be a React-redux store or a Vuex store.
       // const state = {};
 
