@@ -158,6 +158,8 @@ export default function Simulations() {
 
     spread[i] = parseInt(val)
     setPlayerBetSpread(spread)
+
+    setMinimumBet(Math.min(...spread))
     return;
   }
 
@@ -305,12 +307,13 @@ export default function Simulations() {
             </div>
             <div className={styles.rulesSection}>
 
-              <h3>How Many Decks Are Delt From The Shoe (%)</h3>
+              <h3>Shoe Penetration (%)</h3>
               <input type="number"
                 onChange={e => validateInput(parseInt(e.target.value), 100, setPenetration)}
                 value={penetration}
                 required
               />
+              <p>Number of Decks Delt From The Shoe</p>
             </div>
             <div className={styles.rulesSection}>
 
@@ -421,7 +424,7 @@ export default function Simulations() {
       </div>}
       <div className={`${styles.simContainer} ${fadeStyle.fadeIn}`}>
         <h1>Simulations</h1>
-        <p>Create a Blackjack simulation</p>
+        <p>Create a Blackjack Simulation</p>
 
         <a onClick={newSim} className={`${styles.btn} ${styles.btnOrange}`}>New Simulation</a>
         <div>

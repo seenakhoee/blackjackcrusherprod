@@ -247,7 +247,7 @@ class Settings extends React.Component<any, any>
                   </Form.Select> */}
                   <Row>
                     <Col>
-                      <p className="statsTitle">How Many Decks Are Delt From The Shoe?</p>
+                      <p className="statsTitle">Number of Decks Delt From The Shoe</p>
                       <Form.Select value={penetration} onChange={this.updatePen} aria-label="Default select example">
                         <option value={0.87}>87%</option>
                         <option value={0.75}>75%</option>

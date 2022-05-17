@@ -320,6 +320,7 @@ export default class Simulator {
       settings
     );
 
+    console.log(settings.minimumBet, 'minbet')
     this.game = new Game({
       ...this.settings,
 
