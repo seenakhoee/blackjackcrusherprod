@@ -2,9 +2,9 @@ import { MyStopwatch } from './Timer.js'
 import DiscardTray from './DiscardTray'
 import styles from './HeaderDisplay.module.scss'
 
-const HeaderDisplay: any = ({ pen, allowLateSurrender, allowDoubleAfterSplit, deckCount, hitSoft17, showRunningCount, cards, step}) => {
+const HeaderDisplay: any = ({ pen, allowLateSurrender, allowDoubleAfterSplit, deckCount, hitSoft17, showRunningCount, cards, step }) => {
 
-  function renderConditions(deckCount, hitSoft17, allowDoubleAfterSplit, allowLateSurrender){
+  function renderConditions(deckCount, hitSoft17, allowDoubleAfterSplit, allowLateSurrender) {
 
     const h17 = hitSoft17 ? 'H17' : 'S17'
     const das = allowDoubleAfterSplit ? 'DAS' : 'NDAS'
@@ -15,13 +15,13 @@ const HeaderDisplay: any = ({ pen, allowLateSurrender, allowDoubleAfterSplit, de
   }
 
   function cardDelt() {
-    return Array.from({length: Math.floor(cards.length * (pen/100))})
+    return Array.from({ length: Math.floor(cards.length * (pen / 100)) })
   }
 
   return (
 
     <div className={styles.headerInfo}>
-      < DiscardTray cards={cardDelt()} currentPen={pen} step={step} />
+      < DiscardTray deckCount={deckCount} cards={cardDelt()} currentPen={pen} step={step} />
       <div>
         <MyStopwatch />
         <p>{renderConditions(deckCount, hitSoft17, allowDoubleAfterSplit, allowLateSurrender)}</p>

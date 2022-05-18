@@ -35,11 +35,101 @@
   background: #ddd;
 }
 
-.halfMarker {
+.twoDeck {
   position: absolute;
   background: #ddd;
   height: 1px;
   bottom: 49%;
+  width: 100%;
+  opacity: 0.2
+}
+
+.fourDeck1 {
+  position: absolute;
+  background: #ddd;
+  height: 1px;
+  bottom: 24%;
+  width: 100%;
+  opacity: 0.2
+}
+
+.fourDeck2 {
+  position: absolute;
+  background: #ddd;
+  height: 1px;
+  bottom: 74%;
+  width: 100%;
+  opacity: 0.2
+}
+
+.sixDeck1 {
+  position: absolute;
+  background: #ddd;
+  height: 1px;
+  bottom: 16%;
+  width: 100%;
+  opacity: 0.2
+}
+
+.sixDeck2 {
+  position: absolute;
+  background: #ddd;
+  height: 1px;
+  bottom: 33%;
+  width: 100%;
+  opacity: 0.2
+}
+
+.sixDeck3 {
+  position: absolute;
+  background: #ddd;
+  height: 1px;
+  bottom: 66%;
+  width: 100%;
+  opacity: 0.2
+}
+
+.sixDeck4 {
+  position: absolute;
+  background: #ddd;
+  height: 1px;
+  bottom: 83%;
+  width: 100%;
+  opacity: 0.2
+}
+
+.eightDeck1 {
+  position: absolute;
+  background: #ddd;
+  height: 1px;
+  bottom: 12%;
+  width: 100%;
+  opacity: 0.2
+}
+
+.eightDeck2 {
+  position: absolute;
+  background: #ddd;
+  height: 1px;
+  bottom: 37%;
+  width: 100%;
+  opacity: 0.2
+}
+
+.eightDeck3 {
+  position: absolute;
+  background: #ddd;
+  height: 1px;
+  bottom: 62%;
+  width: 100%;
+  opacity: 0.2
+}
+
+.eightDeck4 {
+  position: absolute;
+  background: #ddd;
+  height: 1px;
+  bottom: 87%;
   width: 100%;
   opacity: 0.2
 }
