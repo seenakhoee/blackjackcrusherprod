@@ -18,63 +18,63 @@ type Deviations = Map<playerTotal, Map<dealerCard, Deviation>>;
 // TODO: Consider different deviations for deck counts and s17?
 // prettier-ignore
 export const illustrious18Deviations: Deviations = new Map<playerTotal, Map<dealerCard, Deviation>>([
-  [0,  new Map([
+  [0, new Map([
     [11, { correctMove: Move.AskInsurance, index: ['>=', 3] }],
   ]),
   ],
-  [9,  new Map([
-    [2,  { correctMove: Move.Double,    index: ['>=',  1] }],
-    [7,  { correctMove: Move.Double, index: ['>=',  3] }],
+  [9, new Map([
+    [2, { correctMove: Move.Double, index: ['>=', 1] }],
+    [7, { correctMove: Move.Double, index: ['>=', 3] }],
   ]),
   ],
   [10, new Map([
-    [10, { correctMove: Move.Double, index: ['>=',  4] }],
-    [11, { correctMove: Move.Double, index: ['>=',  3] }],
+    [10, { correctMove: Move.Double, index: ['>=', 4] }],
+    [11, { correctMove: Move.Double, index: ['>=', 3] }],
   ]),
   ],
   [11, new Map([
-    [11, { correctMove: Move.Hit,    index: ['<=',  1] }],
+    [11, { correctMove: Move.Hit, index: ['<=', -1] }],
   ])
   ],
   [12, new Map([
-    [2,  { correctMove: Move.Stand,  index: ['>=',  3] }],
-    [3,  { correctMove: Move.Stand,  index: ['>=',  2] }],
-    [4,  { correctMove: Move.Hit,    index: ['<',  0] }],
-    [5,  { correctMove: Move.Hit,    index: ['<=', -2] }],
-    [6,  { correctMove: Move.Hit,    index: ['<=', -3] }],
+    [2, { correctMove: Move.Stand, index: ['>=', 3] }],
+    [3, { correctMove: Move.Stand, index: ['>=', 2] }],
+    [4, { correctMove: Move.Hit, index: ['<', 0] }],
+    [5, { correctMove: Move.Hit, index: ['<=', -2] }],
+    [6, { correctMove: Move.Hit, index: ['<=', -3] }],
   ]),
   ],
   [13, new Map([
-    [2,  { correctMove: Move.Hit,    index: ['<=', -1] }],
-    [3,  { correctMove: Move.Hit,    index: ['<=', -2] }],
+    [2, { correctMove: Move.Hit, index: ['<=', -1] }],
+    [3, { correctMove: Move.Hit, index: ['<=', -2] }],
   ]),
   ],
   [15, new Map([
-    [10, { correctMove: Move.Stand,  index: ['>=', 4] }]
+    [10, { correctMove: Move.Stand, index: ['>=', 4] }]
   ])
   ],
   [16, new Map([
-    [9,  { correctMove: Move.Stand,  index: ['>=', 4] }],
-    [10, { correctMove: Move.Stand,  index: ['>', 0] }],
+    [9, { correctMove: Move.Stand, index: ['>=', 4] }],
+    [10, { correctMove: Move.Stand, index: ['>', 0] }],
   ]),
   ],
   [20, new Map([
-    [5,  { correctMove: Move.Split,  index: ['>=', 5] }],
-    [6,  { correctMove: Move.Split,  index: ['>=', 4] }],
+    [5, { correctMove: Move.Split, index: ['>=', 5] }],
+    [6, { correctMove: Move.Split, index: ['>=', 4] }],
   ]),
   ],
 ]);
 
 // prettier-ignore
 export const fab4Deviations: Deviations = new Map<playerTotal, Map<dealerCard, Deviation>>([
-  [14,  new Map([
-    [10, { correctMove: Move.Surrender, index: ['>=',  4] }],
+  [14, new Map([
+    [10, { correctMove: Move.Surrender, index: ['>=', 4] }],
   ]),
   ],
-  [15,  new Map([
-    [9,  { correctMove: Move.Surrender, index: ['>=',  2] }],
-    [10, { correctMove: Move.Hit,       index: ['<=', 0] }],
-    [11, { correctMove: Move.Hit,       index: ['<=',  0] }],
+  [15, new Map([
+    [9, { correctMove: Move.Surrender, index: ['>=', 2] }],
+    [10, { correctMove: Move.Hit, index: ['<=', 0] }],
+    [11, { correctMove: Move.Hit, index: ['<=', 0] }],
   ])],
 ]);
 
@@ -107,7 +107,7 @@ export default class HiLoDeviationChecker {
     const deviation =
       hand.allowSurrender && suggestFab4
         ? this._getDeviation(fab4Deviations, playerTotal, dealersCard) ??
-          this._getDeviation(illustrious18Deviations, playerTotal, dealersCard)
+        this._getDeviation(illustrious18Deviations, playerTotal, dealersCard)
         : this._getDeviation(illustrious18Deviations, playerTotal, dealersCard);
 
     if (

@@ -391,7 +391,6 @@ class Blackjack extends React.Component<any, any>
 
     return (
       <>
-        {console.log(this.state.game, 'game')}
         <div className={styles.preloader}></div>
         <div className="app">
           {this.isGameModeDefault() && <AskForCountPopup
