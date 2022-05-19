@@ -180,8 +180,6 @@ export default class Shoe extends GameObject {
     // running count / number of decks remaining floored
     // number of cards - number of decks delt
     //
-    console.log(Math.ceil(this.cardCount / 52), 'cc')
-
     return this.runningCount / Math.ceil(this.cardCount / 52);
   }
 
