@@ -177,7 +177,10 @@ export default class Shoe extends GameObject {
   }
 
   get hiLoTrueCountFullDeck(): number {
-    return this.runningCount / (settings.deckCount - Math.floor((this.maxCards - this.cardCount) / 52));
+    // running count / number of decks remaining floored
+    // number of cards - number of decks delt
+    //
+    return this.runningCount / Math.ceil((this.maxCards - this.cardCount) / 52);
   }
 
   _setupCards(): Card[] {
