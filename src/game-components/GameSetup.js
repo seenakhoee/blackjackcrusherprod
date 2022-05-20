@@ -13,7 +13,7 @@ import { actionDataKeyToCorrectMove, Move } from '../game-logic/types';
 export const settings: {} = {
   autoDeclineInsurance: false,
   disableEvents: false,
-  checkDeviations: false,
+  checkDeviations: true,
 
   // Can be one of 'default', 'pairs', 'uncommon', 'illustrious18'. If the mode
   // is set to 'illustrious18', `checkDeviations` will be forced to true.

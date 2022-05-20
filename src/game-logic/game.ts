@@ -61,7 +61,7 @@ function defaultSettings(minimumBet = 10 * 100): GameSettings {
     // `checkDeviations` will be forced to true.
     mode: GameMode.Default,
     countingSystem: CountingSystem.HiLo,
-    checkWongsDeviations: false,
+    checkWongsDeviations: true,
     debug: false,
 
     playerBankroll: minimumBet * 1000 * 1000,
@@ -300,7 +300,6 @@ export default class Game extends EventEmitter {
     }
 
     if (input === Move.Double && !this.focusedHand.allowDAS && this.focusedHand.fromSplit) {
-      console.log('yup')
       return false;
     }
 
