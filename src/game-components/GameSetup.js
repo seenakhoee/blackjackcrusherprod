@@ -88,7 +88,6 @@ export async function runGame(game: any, addDealInputListner, addKeyP) {
 
     if (game.state.step === GameStep.WaitingForNewGameInput) {
       if (addDealInputListner) {
-        console.log(addKeyP, 'addKeyP')
         addDealInputListner(game, addKeyP)
       }
       return game;

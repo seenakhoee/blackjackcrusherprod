@@ -15,14 +15,15 @@ import {
   rankToString,
   GameMode,
   Move,
+  CountingSystem
 } from './types';
 
 type ShoeAttributes = {
   cards: CardAttributes[];
   runningCount: number;
-  hiLoTrueCount: number;
+  hiLoTrueCount: any;
   penetration: number;
-  hiLoTrueCountFullDeck: number;
+  hiLoTrueCountFullDeck: any;
 };
 
 export class OutOfCardsError extends ExtendableError { }
@@ -40,8 +41,18 @@ export default class Shoe extends GameObject {
     this.shuffle();
   }
 
+  getRunningCount() {
+    if (settings.countingSystem === CountingSystem.HiLo) {
+      return 0;
+    }
+
+    if (settings.countingSystem === CountingSystem.Ko) {
+      return 4
+    }
+  }
+
   setCards(runningCount, cards: Card[]): void {
-    this.runningCount = runningCount;
+    this.runningCount = this.getRunningCount();
     this.currentCardIndex = cards.length - 1;
     for (const card of cards) {
       this.runningCount -= card.countValue;
@@ -53,7 +64,7 @@ export default class Shoe extends GameObject {
   }
 
   resetCards(runningCount): void {
-    this.runningCount = runningCount;
+    this.runningCount = this.getRunningCount();
     this.currentCardIndex = this.cards.length - 1;
     this.shuffle();
   }
@@ -116,12 +127,24 @@ export default class Shoe extends GameObject {
     return this.cards.slice(0, this.currentCardIndex + 1);
   }
 
+  getTrueCountConversion() {
+
+    switch (settings.countingSystem) {
+      case CountingSystem.HiLo:
+
+        return this.hiLoTrueCountFullDeck;
+      case CountingSystem.Ko:
+        console.log('testing 123asdf')
+        return this.runningCount;
+    }
+  }
+
   attributes(): ShoeAttributes {
     return Utils.copy({
       penetration: Utils.round(this.penetration, 2),
       runningCount: this.runningCount,
-      hiLoTrueCountFullDeck: this.hiLoTrueCountFullDeck,
-      hiLoTrueCount: this.hiLoTrueCountFullDeck,
+      hiLoTrueCountFullDeck: 20,
+      hiLoTrueCount: 20,
       cards: this.remainingCards().map((card) => card.attributes()),
     });
   }

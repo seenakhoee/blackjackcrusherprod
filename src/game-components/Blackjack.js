@@ -36,6 +36,7 @@ class Blackjack extends React.Component<any, any>
 
       player: this.props.game.player,
       coverDealerCard: true,
+
       stats: this.getStats(game),
       sessionMovesCorrect: 0,
       sessionMovesTotal: 0,
@@ -48,7 +49,6 @@ class Blackjack extends React.Component<any, any>
       openH17FlashcardChart: false,
       openBasicStrategyChart: false,
       openInstructions: false,
-
       handsCount: this.props.game.players[0].handsCount,
       focusedHandIndex: 0,
       allowLateSurrender: false,
@@ -218,9 +218,23 @@ class Blackjack extends React.Component<any, any>
 
 
   getStats(game) {
+
+    let tc;
+
+    switch (game.countingSystem) {
+
+      case 0:
+        tc = this.getTrueCount(game.shoe.hiLoTrueCountFullDeck)
+        break;
+
+      case 2:
+        tc = game.shoe.runningCount
+        break;
+    }
+
     return {
       runningCount: game.shoe.runningCount,
-      hiLoTrueCount: this.getTrueCount(game.shoe.hiLoTrueCountFullDeck),
+      hiLoTrueCount: tc,
       penetration: game.shoe.penetration,
     }
   }

@@ -91,6 +91,7 @@ export const settings = defaultSettings();
 
 export default class Game extends EventEmitter {
   _state!: GameState;
+  countingSystem: any;
   betAmount!: number;
   spotCount!: number;
   gameMode!: number;
@@ -112,6 +113,8 @@ export default class Game extends EventEmitter {
     this.betAmount = settings.minimumBet;
     this.spotCount = settings.spotCount;
     this.gameMode = settings.mode;
+    this.countingSystem = settings.countingSystem;
+
     if (settings.disableEvents) {
       EventEmitter.disableEvents = true;
     }
@@ -131,6 +134,7 @@ export default class Game extends EventEmitter {
   setupState(): void {
     // We assign a random ID to each game so that we can link hand results with
     // wrong moves in the database.
+    this.countingSystem = settings.countingSystem;
     this.gameMode = settings.mode;
     this.gameId = Utils.randomId();
     this.shoe = this.chainEmitChange(new Shoe(settings.runningCount));

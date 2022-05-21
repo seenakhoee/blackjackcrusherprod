@@ -87,6 +87,14 @@ class Settings extends React.Component<any, any>
 
   updateCountingSystem = (e) => {
     this.setState({ countingSystem: JSON.parse(e.target.value) })
+
+    if (this.state.countingSystem === CountingSystem.Ko) {
+      this.setState({
+        checkDeviations: false,
+        checkWongsDeviations: false,
+        deviations: 'noDeviations',
+      })
+    }
   }
 
   updateRunningCount = (e) => {
@@ -170,7 +178,7 @@ class Settings extends React.Component<any, any>
                       <Form.Select value={countingSystem} onChange={this.updateCountingSystem} aria-label="Default select example">
                         <option value={0}>HiLo</option>
                         <option disabled value={1}>Zen</option>
-                        <option disabled value={2}>Ko</option>
+                        <option value={2}>Ko</option>
                         <option disabled value={3}>Advanced Omega II</option>
                         <option disabled value={4}>Hi-Opt II</option>
 
