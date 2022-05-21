@@ -227,6 +227,10 @@ class Blackjack extends React.Component<any, any>
         tc = this.getTrueCount(game.shoe.hiLoTrueCountFullDeck)
         break;
 
+      case 1:
+        tc = this.getTrueCount(game.shoe.hiLoTrueCountFullDeck)
+        break;
+
       case 2:
         tc = game.shoe.runningCount
         break;

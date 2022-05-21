@@ -42,13 +42,16 @@ export default class Shoe extends GameObject {
   }
 
   getRunningCount() {
-    if (settings.countingSystem === CountingSystem.HiLo) {
-      return 0;
+
+    switch (settings.countingSystem) {
+      case CountingSystem.HiLo:
+        return 0;
+      case CountingSystem.Zen:
+        return 0;
+      case CountingSystem.Ko:
+        return 4;
     }
 
-    if (settings.countingSystem === CountingSystem.Ko) {
-      return 4
-    }
   }
 
   setCards(runningCount, cards: Card[]): void {
@@ -131,10 +134,10 @@ export default class Shoe extends GameObject {
 
     switch (settings.countingSystem) {
       case CountingSystem.HiLo:
-
+        return this.hiLoTrueCountFullDeck;
+      case CountingSystem.Zen:
         return this.hiLoTrueCountFullDeck;
       case CountingSystem.Ko:
-        console.log('testing 123asdf')
         return this.runningCount;
     }
   }
@@ -143,8 +146,8 @@ export default class Shoe extends GameObject {
     return Utils.copy({
       penetration: Utils.round(this.penetration, 2),
       runningCount: this.runningCount,
-      hiLoTrueCountFullDeck: 20,
-      hiLoTrueCount: 20,
+      hiLoTrueCountFullDeck: this.getTrueCountConversion(),
+      hiLoTrueCount: this.getTrueCountConversion(),
       cards: this.remainingCards().map((card) => card.attributes()),
     });
   }

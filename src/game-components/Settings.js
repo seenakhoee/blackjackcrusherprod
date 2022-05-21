@@ -95,6 +95,14 @@ class Settings extends React.Component<any, any>
         deviations: 'noDeviations',
       })
     }
+
+    if (this.state.countingSystem === CountingSystem.Zen) {
+      this.setState({
+        checkDeviations: false,
+        checkWongsDeviations: false,
+        deviations: 'noDeviations',
+      })
+    }
   }
 
   updateRunningCount = (e) => {
@@ -177,10 +185,10 @@ class Settings extends React.Component<any, any>
                       <p>Counting System</p>
                       <Form.Select value={countingSystem} onChange={this.updateCountingSystem} aria-label="Default select example">
                         <option value={0}>HiLo</option>
-                        <option disabled value={1}>Zen</option>
+                        {/* <option value={1}>Zen</option> */}
                         <option value={2}>Ko</option>
-                        <option disabled value={3}>Advanced Omega II</option>
-                        <option disabled value={4}>Hi-Opt II</option>
+                        {/* <option disabled value={3}>Advanced Omega II</option>
+                        <option disabled value={4}>Hi-Opt II</option> */}
 
                       </Form.Select>
                     </Col>
