@@ -205,6 +205,7 @@ class Settings extends React.Component<any, any>
                   <Row>
                     <Col>
                       <Form.Select value={this.props.deckCount} onChange={this.props.updateDeckCount} aria-label="Default select example">
+                        <option value={1}>1 Deck</option>
                         <option value={2}>2 Decks</option>
                         <option value={4}>4 Decks</option>
                         <option value={6}>6 Decks</option>
