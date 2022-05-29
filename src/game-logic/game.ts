@@ -35,6 +35,7 @@ export type GameSettings = {
   runningCount: number;
   spotCount: number;
   askForCount: number;
+  onlyDouble911: boolean;
   playerStrategyOverride: {
     [index: number]: PlayerStrategy;
   };
@@ -92,7 +93,8 @@ function defaultSettings(minimumBet = 10 * 100): GameSettings {
     runningCount: 0,
     spotCount: 1,
     askForCount: 3,
-    deckEstimation: DeckEstimation.Full
+    deckEstimation: DeckEstimation.Full,
+    onlyDouble911: false
   };
 }
 
@@ -322,6 +324,10 @@ export default class Game extends EventEmitter {
 
     if (input === Move.Double && !this.focusedHand.allowDAS && this.focusedHand.fromSplit) {
       return false;
+    }
+
+    if (input === Move.Double && !this.focusedHand.doubleOnly911) {
+      return false
     }
 
     return true;

@@ -319,6 +319,12 @@ class Blackjack extends React.Component<any, any>
     }
   }
 
+  checkDoubleOnly911(playerHands) {
+    if (playerHands[this.state.focusedHandIndex]) {
+      return playerHands[this.state.focusedHandIndex].doubleOnly911;
+    }
+  }
+
   correctTCInput(correct, userInput, correctTc) {
     // pass this in
     // if user inputs correct
@@ -530,6 +536,7 @@ class Blackjack extends React.Component<any, any>
                 firstMove={this.checkIfFirstMove(playerHands)}
                 fromSplit={playerHands[this.state.focusedHandIndex] ? playerHands[this.state.focusedHandIndex].fromSplit : false}
                 showDealButton={this.state.showDealButton}
+                doubleOnly911={this.checkDoubleOnly911(playerHands)}
               />
             </nav>
           </footer>

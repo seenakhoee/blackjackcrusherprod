@@ -23,7 +23,8 @@ export default function Controls(
     toggleInstructions,
     allowDAS,
     fromSplit,
-    showDealButton
+    showDealButton,
+    doubleOnly911
   }) {
 
   const history = useHistory()
@@ -87,7 +88,7 @@ export default function Controls(
           <>
             <button className="customButton hit" data-action="h"><i className="icon-down" data-action="h"></i><span data-action="h">Hit</span></button>
             <button className="customButton stand" data-action="s"><i className="icon-down" data-action="s"></i><span data-action="s">Stand</span></button>
-            {allowDAS && (
+            {(allowDAS && doubleOnly911) && (
               <button className="customButton hit" data-action="d"><i className="icon-down" data-action="d"></i><span data-action="d">Double</span></button>
             )}
             {showSplit && (
@@ -103,7 +104,7 @@ export default function Controls(
           <>
             <button className="customButton hit" data-action="h"><i className="icon-down" data-action="h"></i><span data-action="h">Hit</span></button>
             <button className="customButton stand" data-action="s"><i className="icon-down" data-action="s"></i><span data-action="s">Stand</span></button>
-            {firstMove && (
+            {(firstMove && doubleOnly911) && (
               <button className="customButton hit" data-action="d"><i className="icon-down" data-action="d"></i><span data-action="d">Double</span></button>
             )}
             {showSplit && (

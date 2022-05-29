@@ -198,6 +198,16 @@ export default class Hand extends GameObject {
     return this.firstMove;
   }
 
+  get doubleOnly911(): boolean {
+    if (settings.onlyDouble911) {
+      if (this.isSoft || (this.cardTotal > 11 || this.cardTotal < 9)) {
+        return false;
+      }
+    }
+
+    return true
+  }
+
   get allowDAS(): boolean {
     return this.firstMove && settings.allowDoubleAfterSplit;
   }

@@ -35,7 +35,8 @@ class Settings extends React.Component<any, any>
       penetration: 0.75,
       countingSystem: CountingSystem.HiLo,
       allowResplitAces: false,
-      deckEstimation: DeckEstimation.Full
+      deckEstimation: DeckEstimation.Full,
+      onlyDouble911: false,
     }
   }
 
@@ -61,7 +62,8 @@ class Settings extends React.Component<any, any>
       penetration: this.state.penetration,
       countingSystem: this.state.countingSystem,
       askForCount: this.props.askForCountValue,
-      deckEstimation: this.state.deckEstimation
+      deckEstimation: this.state.deckEstimation,
+      onlyDouble911: this.state.onlyDouble911
     }
 
     this.props.resetGame(newSettings)
@@ -79,6 +81,10 @@ class Settings extends React.Component<any, any>
 
   updateDeckEstimation = (e) => {
     this.setState({ deckEstimation: JSON.parse(e.target.value) })
+  }
+
+  updateOnlyDouble911 = (e) => {
+    this.setState({ onlyDouble911: JSON.parse(e.target.value) })
   }
 
   updateRSA = (e) => {
@@ -203,6 +209,14 @@ class Settings extends React.Component<any, any>
                       <Form.Select value={this.props.hitSoft17} onChange={this.props.updateHitSoft17} aria-label="Default select example">
                         <option value={true}>H17</option>
                         <option value={false}>S17</option>
+                      </Form.Select>
+                    </Col>
+                    <Col>
+                      <Form.Select
+                        value={this.state.onlyDouble911}
+                        onChange={this.updateOnlyDouble911}>
+                        <option value={false}>Double All</option>
+                        <option value={true}>Only 9-11</option>
                       </Form.Select>
                     </Col>
                   </Row>
