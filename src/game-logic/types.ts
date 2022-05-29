@@ -7,6 +7,7 @@ export enum Move {
   Split,
   Stand,
   Surrender,
+  Answer
 }
 
 export enum ChartMove {
@@ -244,6 +245,10 @@ export function actionDataKeyToCorrectMove(
       return Move.Surrender;
     case 'h':
       return Move.Hit;
+    case 'a':
+      return Move.Answer;
+    case 'Enter':
+      return Move.Answer;
   }
 }
 

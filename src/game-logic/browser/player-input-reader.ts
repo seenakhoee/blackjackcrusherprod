@@ -23,6 +23,7 @@ export default class DOMPlayerInputReader implements PlayerInputReader {
       const action = actionDataKeyToCorrectMove(
         event.target?.dataset.action ?? ''
       );
+
       if (action) {
         document.body.removeEventListener('click', clickHandler);
         callback(action);

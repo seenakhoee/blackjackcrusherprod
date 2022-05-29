@@ -55,6 +55,8 @@ type GameState = {
   totalBlackjacksReceived: number;
   totalIll18Deviations: number;
   totalExpandedDeviations: number;
+  userInputTc: number;
+  errorPopup: boolean
 };
 
 function defaultSettings(minimumBet = 10 * 100): GameSettings {
@@ -207,6 +209,8 @@ export default class Game extends EventEmitter {
       totalBlackjacksReceived: 0,
       totalIll18Deviations: 0,
       totalExpandedDeviations: 0,
+      userInputTc: 0,
+      errorPopup: false,
     };
 
     const hasKey = <T extends SimpleObject>(
@@ -349,13 +353,34 @@ export default class Game extends EventEmitter {
     }
   }
 
+  checkTcAnswer() {
+    // if correct step = GameStep.Start
+    if (this.shoe.deckEstimation() === this.state.userInputTc) {
+      return true
+    } else {
+      this.state.errorPopup = true;
+      return false
+    }
+    // if false step = GameStep.AskForCount
+    // show error
+    // after error close GameStep.start
+  }
+
   step(input?: Move, gameSettings?: any): GameStep {
     let step: GameStep = this.state.step;
     try {
       switch (step) {
 
         case GameStep.AskForCount:
-          step = GameStep.Start;
+          if (this.state.errorPopup) {
+            this.state.errorPopup = false
+            step = GameStep.Start
+            break;
+          }
+
+          this.checkTcAnswer() ?
+            step = GameStep.Start :
+            step = GameStep.AskForCount
           break;
 
         case GameStep.Start:
@@ -411,7 +436,6 @@ export default class Game extends EventEmitter {
             break;
           }
           this.removeCards();
-          console.log(this.askForCountPopup())
 
           this.askForCountPopup() ?
             step = GameStep.AskForCount :

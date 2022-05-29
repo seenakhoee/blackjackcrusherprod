@@ -55,6 +55,8 @@ export default function AskForCountPopup({ askForCountValue, round, step, hiLoTr
   }
 
   function checkUserTrueCount() {
+    game.state.userInputTc = parseInt(userInputRef.current.value)
+    // if correct
     if (hiLoTrueCount === parseInt(userInputRef.current.value)) {
       correctTCInput(true, hiLoTrueCount, parseInt(userInputRef.current.value))
       setUserTCInput('')
@@ -88,6 +90,7 @@ export default function AskForCountPopup({ askForCountValue, round, step, hiLoTr
           required
         />
         <button
+          data-action='a'
           onClick={onSubmitCount}
           className={`${styles.btn} ${styles.btnGreen}`}>Submit</button>
       </div>
@@ -97,6 +100,7 @@ export default function AskForCountPopup({ askForCountValue, round, step, hiLoTr
         <p>Your Answer: {userInputRef.current.value}</p>
         <p>Current True Count: {hiLoTrueCount} </p>
         <button
+          data-action="a"
           onClick={() => closeErrorModal()}
           className={`${styles.btn} ${styles.btnGreen} ${styles.btnDismiss}`}>Dismiss</button>
       </div>
