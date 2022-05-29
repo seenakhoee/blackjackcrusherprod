@@ -26,7 +26,6 @@ export default function AskForCountPopup({ askForCountValue, round, step, hiLoTr
   // }, [step]);
 
   useEffect(() => {
-    console.log('in use effect')
     if (showCountPopup) {
       setShowAskForCountPopup(true)
     } else {

@@ -103,6 +103,13 @@ export enum CountingSystem {
   Ho2
 }
 
+export enum DeckEstimation {
+  Full,
+  Half,
+  Quarter,
+  Exact
+}
+
 export type CheckResult = {
   code: Move;
   hint: string;

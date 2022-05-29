@@ -218,28 +218,11 @@ class Blackjack extends React.Component<any, any>
 
 
   getStats(game) {
-
-    let tc;
-
-    switch (game.countingSystem) {
-
-      case 0:
-        tc = game.shoe.hiLoTrueCountFullDeck
-        break;
-
-      case 1:
-        tc = game.shoe.hiLoTrueCountFullDeck
-        break;
-
-      case 2:
-        tc = game.shoe.runningCount
-        break;
-    }
-
     return {
       runningCount: game.shoe.runningCount,
-      hiLoTrueCount: tc,
+      hiLoTrueCount: game.shoe.getTrueCountConversion(),
       penetration: game.shoe.penetration,
+      numberOfCardsRemaining: game.shoe.cardCount
     }
   }
 
@@ -479,6 +462,7 @@ class Blackjack extends React.Component<any, any>
           </div>
           {/* <header className={this.state.openStats ? "openStats" : ''}> */}
           {this.state.openStats && <Stats
+            deckCount={deckCount}
             stats={this.state.stats}
             showStats={openStats}
             onKeyPress={this.toggleKeypress}

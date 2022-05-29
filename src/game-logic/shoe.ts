@@ -15,7 +15,8 @@ import {
   rankToString,
   GameMode,
   Move,
-  CountingSystem
+  CountingSystem,
+  DeckEstimation
 } from './types';
 
 type ShoeAttributes = {
@@ -23,7 +24,6 @@ type ShoeAttributes = {
   runningCount: number;
   hiLoTrueCount: any;
   penetration: number;
-  hiLoTrueCountFullDeck: any;
 };
 
 export class OutOfCardsError extends ExtendableError { }
@@ -134,11 +134,24 @@ export default class Shoe extends GameObject {
 
     switch (settings.countingSystem) {
       case CountingSystem.HiLo:
-        return this.hiLoTrueCountFullDeck;
+        return this.deckEstimation();
       case CountingSystem.Zen:
-        return this.hiLoTrueCountFullDeck;
+        return this.deckEstimation();
       case CountingSystem.Ko:
         return this.runningCount;
+    }
+  }
+
+  deckEstimation() {
+    switch (settings.deckEstimation) {
+      case DeckEstimation.Full:
+        return this.hiLoTrueCountFullDeck;
+      case DeckEstimation.Half:
+        return this.hiLoTrueCountHalfDeck;
+      case DeckEstimation.Quarter:
+        return this.hiLoTrueCountQuarterDeck;
+      case DeckEstimation.Exact:
+        return this.hiLoTrueCount;
     }
   }
 
@@ -146,7 +159,6 @@ export default class Shoe extends GameObject {
     return Utils.copy({
       penetration: Utils.round(this.penetration, 2),
       runningCount: this.runningCount,
-      hiLoTrueCountFullDeck: this.getTrueCountConversion(),
       hiLoTrueCount: this.getTrueCountConversion(),
       cards: this.remainingCards().map((card) => card.attributes()),
     });
@@ -199,14 +211,46 @@ export default class Shoe extends GameObject {
   }
 
   get hiLoTrueCount(): number {
+    console.log('is this run')
     return Math.floor((this.runningCount / this.decksRemaining) * 100) / 100;
   }
 
   get hiLoTrueCountFullDeck(): number {
     // running count / number of decks remaining floored
+
     // number of cards - number of decks delt
     //
     let tc = this.runningCount / Math.ceil(this.cardCount / 52);
+
+    let formatTc = Math.sign(tc) * Math.floor(Math.abs(tc));
+
+    if (formatTc === -0) {
+      return 0;
+    } else {
+      return formatTc;
+    }
+  }
+
+  get hiLoTrueCountHalfDeck(): number {
+    // running count / number of decks remaining floored
+    // number of cards - number of decks delt
+    //
+    let tc = this.runningCount / (Math.ceil((this.cardCount / 52) / .50) * .50);
+
+    let formatTc = Math.sign(tc) * Math.floor(Math.abs(tc));
+
+    if (formatTc === -0) {
+      return 0;
+    } else {
+      return formatTc;
+    }
+  }
+
+  get hiLoTrueCountQuarterDeck(): number {
+    // running count / number of decks remaining floored
+    // number of cards - number of decks delt
+
+    let tc = this.runningCount / (Math.ceil((this.cardCount / 52) / .25) * .25);
 
     let formatTc = Math.sign(tc) * Math.floor(Math.abs(tc));
 

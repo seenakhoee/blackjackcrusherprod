@@ -133,14 +133,15 @@ export default function SimResult({ test }) {
           <span>% of Blackjacks Received out of {result.handsPlayed} hands : </span>
           {(result.totalBlackjacksReceived / result.handsPlayed * 100).toFixed(2)}%
         </p>
-        <p
-          onClick={() => { toggleBlackjackCounter() }} >
-          <span>Number of Blackjacks  at each True Count: <i className={arrowDirectionForCounter}></i></span>
+        <p>
+          <span onClick={() => { toggleBlackjackCounter() }} >Number of Blackjacks  at each True Count: <i className={arrowDirectionForCounter}></i></span>
           <div className={styles.tcContainer}>
             {getBlackjackCount(result.blackjackCounter)}
           </div>
         </p>
-
+        <p><span>Total Illustrious18 + Fab4 Deviations Taken : </span>{result.totalIll18Deviations}</p>
+        <p><span>Total Expanded Deviations Taken : </span>{result.totalExpandedDeviations}</p>
+        <p><span>Total Deviations Taken : </span>{result.totalExpandedDeviations + result.totalIll18Deviations}</p>
 
         <span className={styles.backButton}><Link to='/simulations'>Back To Simulations Overview</Link></span>
 

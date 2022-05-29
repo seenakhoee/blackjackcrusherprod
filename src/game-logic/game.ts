@@ -16,11 +16,13 @@ import {
   PlayerStrategy,
   BlackjackPayout,
   GameMode,
-  CountingSystem
+  CountingSystem,
+  DeckEstimation
 } from './types';
 import game from './node/commands/game';
 
 export type GameSettings = {
+  deckEstimation: DeckEstimation;
   autoDeclineInsurance: boolean;
   disableEvents: boolean;
   checkDeviations: boolean;
@@ -51,6 +53,8 @@ type GameState = {
   blackjackCounter: object;
   tcAtDeal: any;
   totalBlackjacksReceived: number;
+  totalIll18Deviations: number;
+  totalExpandedDeviations: number;
 };
 
 function defaultSettings(minimumBet = 10 * 100): GameSettings {
@@ -85,7 +89,8 @@ function defaultSettings(minimumBet = 10 * 100): GameSettings {
     penetration: 0.75,
     runningCount: 0,
     spotCount: 1,
-    askForCount: 3
+    askForCount: 3,
+    deckEstimation: DeckEstimation.Full
   };
 }
 
@@ -200,6 +205,8 @@ export default class Game extends EventEmitter {
       blackjackCounter: {},
       tcAtDeal: false,
       totalBlackjacksReceived: 0,
+      totalIll18Deviations: 0,
+      totalExpandedDeviations: 0,
     };
 
     const hasKey = <T extends SimpleObject>(
@@ -415,7 +422,6 @@ export default class Game extends EventEmitter {
     this.spotCount = spotCount;
 
     let nextStep: GameStep = this.state.step;
-
     do {
       nextStep = this.step();
     } while (nextStep !== GameStep.Start);
@@ -428,17 +434,17 @@ export default class Game extends EventEmitter {
     }
 
     if (this.state.tcAtDeal === false) {
-      this.state.tcAtDeal = this.shoe.hiLoTrueCountFullDeck;
+      this.state.tcAtDeal = this.shoe.deckEstimation();
 
-      if (!this.state.blackjackCounter[this.shoe.hiLoTrueCountFullDeck]) {
-        this.state.blackjackCounter[this.shoe.hiLoTrueCountFullDeck] = {}
+      if (!this.state.blackjackCounter[this.shoe.deckEstimation()]) {
+        this.state.blackjackCounter[this.shoe.deckEstimation()] = {}
       }
 
-      this.state.blackjackCounter[this.shoe.hiLoTrueCountFullDeck].tcTotalCount =
-        ++this.state.blackjackCounter[this.shoe.hiLoTrueCountFullDeck].tcTotalCount || 1;
+      this.state.blackjackCounter[this.shoe.deckEstimation()].tcTotalCount =
+        ++this.state.blackjackCounter[this.shoe.deckEstimation()].tcTotalCount || 1;
 
-      this.state.blackjackCounter[this.shoe.hiLoTrueCountFullDeck].blackjacksCount =
-        this.state.blackjackCounter[this.shoe.hiLoTrueCountFullDeck].blackjacksCount || 0;
+      this.state.blackjackCounter[this.shoe.deckEstimation()].blackjacksCount =
+        this.state.blackjackCounter[this.shoe.deckEstimation()].blackjacksCount || 0;
 
     }
 
@@ -591,11 +597,13 @@ export default class Game extends EventEmitter {
     }
 
     if (hand.cardTotal <= 21) {
-      if (!player.isNPC) {
 
-        // checking deviation / correct play
-        this.validateInput(input, hand);
-      }
+      // not sure why this is here.
+      // if (!player.isNPC) {
+
+      // checking deviation / correct play
+      this.validateInput(input, hand);
+      // }
 
       if (input === Move.Hit) {
         player.takeCard(this.shoe.drawCard(), { hand });

@@ -6,8 +6,7 @@ import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
 import { render } from '@testing-library/react';
 import { createNewGame } from './GameSetup'
-import { GameMode, CountingSystem } from '../game-logic';
-
+import { GameMode, CountingSystem, DeckEstimation } from '../game-logic';
 // pass in state as props
 // set the select as the props
 
@@ -36,7 +35,7 @@ class Settings extends React.Component<any, any>
       penetration: 0.75,
       countingSystem: CountingSystem.HiLo,
       allowResplitAces: false,
-
+      deckEstimation: DeckEstimation.Full
     }
   }
 
@@ -62,6 +61,7 @@ class Settings extends React.Component<any, any>
       penetration: this.state.penetration,
       countingSystem: this.state.countingSystem,
       askForCount: this.props.askForCountValue,
+      deckEstimation: this.state.deckEstimation
     }
 
     this.props.resetGame(newSettings)
@@ -75,6 +75,10 @@ class Settings extends React.Component<any, any>
 
   updatePen = (e) => {
     this.setState({ penetration: JSON.parse(e.target.value) })
+  }
+
+  updateDeckEstimation = (e) => {
+    this.setState({ deckEstimation: JSON.parse(e.target.value) })
   }
 
   updateRSA = (e) => {
@@ -264,12 +268,23 @@ class Settings extends React.Component<any, any>
                   </Form.Select> */}
                   <Row>
                     <Col>
-                      <p className="statsTitle">Number of Decks Delt From The Shoe</p>
+                      <p className="statsTitle">Decks Delt From The Shoe</p>
                       <Form.Select value={penetration} onChange={this.updatePen} aria-label="Default select example">
                         <option value={0.875}>87.5%</option>
                         <option value={0.75}>75%</option>
                         <option value={0.66}>66%</option>
                         <option value={0.50}>50%</option>
+                      </Form.Select>
+                    </Col>
+                    <Col>
+                      <p className="statsTitle">Deck Estimation</p>
+                      <Form.Select
+                        value={this.state.deckEstimation}
+                        onChange={this.updateDeckEstimation}>
+                        <option value={0}>Full</option>
+                        <option value={1}>Half</option>
+                        <option value={2}>Quarter</option>
+                        <option value={3}>Exact</option>
                       </Form.Select>
                     </Col>
                   </Row>

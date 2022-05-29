@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import BasicStrategyChecker from '../game-logic/basic-strategy-checker';
 import { render } from '@testing-library/react';
-
+import styles from './Stats.module.scss'
 class Stats extends React.Component<any, any>
 {
   constructor(props) {
@@ -41,7 +41,8 @@ class Stats extends React.Component<any, any>
       playerMistakes,
       playerMistake,
       totalCountingDecisions,
-      correctCountingDecisions
+      correctCountingDecisions,
+      deckCount
     } = this.props
 
     let totalMoves = sessionMovesTotal + totalCountingDecisions
@@ -60,12 +61,17 @@ class Stats extends React.Component<any, any>
           <Modal.Body>
             <p>Running Count : {stats.runningCount}</p>
             <p>True Count : {stats.hiLoTrueCount}</p>
-            <p>1. Total Moves : {totalMoves}</p>
-            <p>2. Total Correct Moves : {totalCorrect}</p>
-            <p>3. Total Mistakes : {totalMistakes}</p>
-            <p>4. Playing Mistake : {playingMistake}</p>
-            <p>5. Counting Mistake : {countingMistake}</p>
-
+            <div className={styles.movesContainer}>
+              <p>Number of Cards Delt : {deckCount * 52 - stats.numberOfCardsRemaining}</p>
+              <p>Number of Cards Remaining : {stats.numberOfCardsRemaining}</p>
+            </div>
+            <div className={styles.movesContainer}>
+              <p>1. Total Moves : {totalMoves}</p>
+              <p>2. Total Correct Moves : {totalCorrect}</p>
+              <p>3. Total Mistakes : {totalMistakes}</p>
+              <p>4. Playing Mistake : {playingMistake}</p>
+              <p>5. Counting Mistake : {countingMistake}</p>
+            </div>
 
           </Modal.Body>
 

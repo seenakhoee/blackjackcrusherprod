@@ -148,6 +148,8 @@ export default class HiLoDeviationChecker {
       return false;
     }
 
+    game.state.totalIll18Deviations = ++game.state.totalIll18Deviations
+
     let hint;
     const { correctMove, index } = deviation;
 

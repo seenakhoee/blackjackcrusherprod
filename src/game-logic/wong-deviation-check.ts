@@ -180,7 +180,7 @@ export const wongsFullSoftDeviations: Deviations = new Map<playerTotal, Map<deal
     [3, { correctMove: Move.Double, index: ['>=', 4] }],
     [4, { correctMove: Move.Hit, index: ['<=', -3] }],
     [5, { correctMove: Move.Hit, index: ['<=', -6] }],
-    ]),
+  ]),
   ],
   [17, new Map([
     [2, { correctMove: Move.Double, index: ['>=', 1] }],
@@ -232,7 +232,7 @@ export const expandedSurrender: Deviations = new Map<playerTotal, Map<dealerCard
   ])],
 ]);
 
-function getDeviation(game, hand, trueCount, checker, deviations){
+function getDeviation(game, hand, trueCount, checker, deviations) {
   const playerTotal =
     game.state.step === GameStep.WaitingForInsuranceInput
       ? 0
@@ -329,6 +329,8 @@ export default class WongsFullDeviationChecker {
     if (!deviation) {
       return false;
     }
+
+    game.state.totalExpandedDeviations = ++game.state.totalExpandedDeviations
 
     let hint;
     const { correctMove, index } = deviation;

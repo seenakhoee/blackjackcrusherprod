@@ -251,8 +251,8 @@ export default function Simulations() {
               <h3>Player Strategy</h3>
               <select value={playerStrategy} onChange={e => setPlayerStrategy(JSON.parse(e.target.value))}>
                 <option value={1}>Hilo Basic Strategy</option>
-                <option value={2}>Hilo Illustrious 18</option>
-                <option value={3}>Hilo Illustrious 18 + Fab4</option>
+                <option value={2}>Hilo Illustrious 18 + Fab 4</option>
+                <option value={3}>All Deviations</option>
               </select>
             </div>
             <div className={styles.rulesSection}>

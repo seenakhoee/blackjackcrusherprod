@@ -21,6 +21,8 @@ export type SimulatorSettings = {
   hands: number;
   riskOfRuin: number;
   roundsPerHour: number;
+  checkDeviations: boolean;
+  checkWongsDeviations: boolean;
 } & TableRules;
 
 export type SimulatorResult = {
@@ -121,6 +123,8 @@ function defaultSettings({
   return {
     // Simulator-only settings.
     // hands: 10 ** 7,
+    checkDeviations: false,
+    checkWongsDeviations: false,
     hands: 1000,
 
     playerStrategy: PlayerStrategy.BasicStrategyI18Fab4,
@@ -312,6 +316,24 @@ export default class Simulator {
   intro: FormattedSimulatorIntro;
 
   constructor(settings: Partial<SimulatorSettings>) {
+
+    // will need to change this
+
+    switch (settings.playerStrategy) {
+      case 1:
+        settings.checkDeviations = false;
+        settings.checkWongsDeviations = false;
+        break;
+      case 2:
+        settings.checkDeviations = true;
+        settings.checkWongsDeviations = false;
+        break;
+      case 3:
+        settings.checkDeviations = true;
+        settings.checkWongsDeviations = true;
+        break;
+    }
+
     this.settings = Utils.merge(
       defaultSettings({
         minimumBet: settings.minimumBet,
@@ -468,10 +490,15 @@ export default class Simulator {
     const handsPerHour = this.settings.roundsPerHour;
     const hoursPlayed = handsPlayed / handsPerHour;
 
+    const totalExpandedDeviations = this.game.state.totalExpandedDeviations;
+    const totalIll18Deviations = this.game.state.totalIll18Deviations;
+
     // TODO: Make RoR configurable.
     const riskOfRuin = this.settings.riskOfRuin / 100;
 
     let results = {
+      totalExpandedDeviations,
+      totalIll18Deviations,
       totalBlackjacksReceived,
       blackjackCounter,
       amountEarned,
