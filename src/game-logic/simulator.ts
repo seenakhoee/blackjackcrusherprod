@@ -320,7 +320,6 @@ export default class Simulator {
       settings
     );
 
-    console.log(settings.minimumBet, 'minbet')
     this.game = new Game({
       ...this.settings,
 
@@ -414,11 +413,11 @@ export default class Simulator {
     // TODO: Fix `handsPlayed` going slightly over the limit if the next
     // iteration involves playing more than one hand.
     while (handsPlayed < this.settings.hands) {
-      const betAmount = this.betAmount(this.game.shoe.hiLoTrueCount);
-      const spotCount = this.spotCount(this.game.shoe.hiLoTrueCount);
+      const betAmount = this.betAmount(this.game.shoe.hiLoTrueCountFullDeck);
+      const spotCount = this.spotCount(this.game.shoe.hiLoTrueCountFullDeck);
       const prevBalance = this.game.player.balance;
 
-      betHistory.push([betAmount, this.game.shoe.hiLoTrueCount])
+      betHistory.push([betAmount, this.game.shoe.hiLoTrueCountFullDeck])
       this.game.run(betAmount, spotCount);
 
       // We calculate mean and variance from a stream of values since a large
@@ -460,6 +459,10 @@ export default class Simulator {
 
     bankrollVariance /= bankrollValues - 1;
 
+    const totalBlackjacksReceived = this.game.state.totalBlackjacksReceived;
+
+    const blackjackCounter = this.game.state.blackjackCounter;
+
     const amountEarned = this.game.player.balance - bankrollStart;
     // const handsPerHour = estimateHandsPerHour(this.settings.playerCount);
     const handsPerHour = this.settings.roundsPerHour;
@@ -469,6 +472,8 @@ export default class Simulator {
     const riskOfRuin = this.settings.riskOfRuin / 100;
 
     let results = {
+      totalBlackjacksReceived,
+      blackjackCounter,
       amountEarned,
       amountWagered,
       bankrollMean,

@@ -48,6 +48,9 @@ type GameState = {
   focusedHandIndex: number;
   round: number;
   userInputTC: boolean;
+  blackjackCounter: object;
+  tcAtDeal: any;
+  totalBlackjacksReceived: number;
 };
 
 function defaultSettings(minimumBet = 10 * 100): GameSettings {
@@ -194,6 +197,9 @@ export default class Game extends EventEmitter {
       round: 0,
       userInputTC: false,
       step: GameStep.WaitingForNewGameInput,
+      blackjackCounter: {},
+      tcAtDeal: false,
+      totalBlackjacksReceived: 0,
     };
 
     const hasKey = <T extends SimpleObject>(
@@ -421,6 +427,21 @@ export default class Game extends EventEmitter {
       console.log('Shoe:', this.shoe.serialize());
     }
 
+    if (this.state.tcAtDeal === false) {
+      this.state.tcAtDeal = this.shoe.hiLoTrueCountFullDeck;
+
+      if (!this.state.blackjackCounter[this.shoe.hiLoTrueCountFullDeck]) {
+        this.state.blackjackCounter[this.shoe.hiLoTrueCountFullDeck] = {}
+      }
+
+      this.state.blackjackCounter[this.shoe.hiLoTrueCountFullDeck].tcTotalCount =
+        ++this.state.blackjackCounter[this.shoe.hiLoTrueCountFullDeck].tcTotalCount || 1;
+
+      this.state.blackjackCounter[this.shoe.hiLoTrueCountFullDeck].blackjacksCount =
+        this.state.blackjackCounter[this.shoe.hiLoTrueCountFullDeck].blackjacksCount || 0;
+
+    }
+
     for (const player of this.players) {
       // Clears the result from the previous iteration. Otherwise this object
       // will grow indefinitely over subsequent `step()` calls.
@@ -535,14 +556,23 @@ export default class Game extends EventEmitter {
     }
   }
 
+  addToBlackjackCounter() {
+    this.state.totalBlackjacksReceived = ++this.state.totalBlackjacksReceived;
+
+    this.state.blackjackCounter[this.state.tcAtDeal].blackjacksCount =
+      ++this.state.blackjackCounter[this.state.tcAtDeal].blackjacksCount;
+  }
+
   setblackjackWinner(player: Player, hand: Hand): boolean {
     if (this.dealer.blackjack && hand.blackjack) {
+      this.addToBlackjackCounter()
       player.setHandWinner({ winner: HandWinner.Push, hand });
       return true;
     } else if (this.dealer.blackjack) {
       player.setHandWinner({ winner: HandWinner.Dealer, hand });
       return true;
     } else if (hand.blackjack) {
+      this.addToBlackjackCounter()
       player.setHandWinner({ winner: HandWinner.Player, hand });
       return true;
     }
@@ -778,6 +808,7 @@ export default class Game extends EventEmitter {
         }
       });
     }
+    this.state.tcAtDeal = false;
   }
 
   pushAllPlayersHands(): void {

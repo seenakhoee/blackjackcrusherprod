@@ -224,11 +224,11 @@ class Blackjack extends React.Component<any, any>
     switch (game.countingSystem) {
 
       case 0:
-        tc = this.getTrueCount(game.shoe.hiLoTrueCountFullDeck)
+        tc = game.shoe.hiLoTrueCountFullDeck
         break;
 
       case 1:
-        tc = this.getTrueCount(game.shoe.hiLoTrueCountFullDeck)
+        tc = game.shoe.hiLoTrueCountFullDeck
         break;
 
       case 2:
@@ -241,19 +241,6 @@ class Blackjack extends React.Component<any, any>
       hiLoTrueCount: tc,
       penetration: game.shoe.penetration,
     }
-  }
-
-  getTrueCount(tc) {
-    // or
-
-    let trueCount = Math.sign(tc) * Math.floor(Math.abs(tc));
-
-    if (trueCount === -0) {
-      return 0;
-    } else {
-      return trueCount;
-    }
-
   }
 
   returnStat(stat) {
