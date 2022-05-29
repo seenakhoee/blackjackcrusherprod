@@ -12,19 +12,6 @@ export default function AskForCountPopup({ askForCountValue, round, step, hiLoTr
   const matched = useRef(false)
   const userInputRef = useRef('')
 
-  // useEffect(() => {
-  //   if (round % askForCountValue === 0 && round !== 0) {
-  //     matched.current = true
-  //   }
-  // }, [round])
-
-  // useEffect(() => {
-  //   if (matched.current && step === 4) {
-  //     setShowAskForCountPopup(true)
-  //     matched.current = false
-  //   }
-  // }, [step]);
-
   useEffect(() => {
     if (showCountPopup) {
       setShowAskForCountPopup(true)

@@ -48,6 +48,7 @@ export enum GameStep {
   WaitingForInsuranceInput,
   WaitingForNewGameInput,
   WaitingForPlayInput,
+  AskForCount,
 }
 
 export enum Suit {

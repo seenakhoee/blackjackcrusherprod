@@ -341,13 +341,23 @@ export default class Game extends EventEmitter {
   }
 
   askForCountPopup() {
-    return (this.state.round % settings.askForCount === 0) ? true : false;
+    if (this.state.round % settings.askForCount === 0 && this.state.round !== 0) {
+      this.emit(Event.UserInput, 'showCountPopup', true)
+      return true
+    } else {
+      return false;
+    }
   }
 
   step(input?: Move, gameSettings?: any): GameStep {
     let step: GameStep = this.state.step;
     try {
       switch (step) {
+
+        case GameStep.AskForCount:
+          step = GameStep.Start;
+          break;
+
         case GameStep.Start:
           this.incrementRound()
           step = this.dealInitialCards();
@@ -401,7 +411,11 @@ export default class Game extends EventEmitter {
             break;
           }
           this.removeCards();
-          step = GameStep.Start;
+          console.log(this.askForCountPopup())
+
+          this.askForCountPopup() ?
+            step = GameStep.AskForCount :
+            step = GameStep.Start
       }
     } catch (error) {
       if (error instanceof OutOfCardsError) {
