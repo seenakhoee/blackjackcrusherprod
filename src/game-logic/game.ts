@@ -443,9 +443,13 @@ export default class Game extends EventEmitter {
           }
           this.removeCards();
 
-          this.askForCountPopup() ?
-            step = GameStep.AskForCount :
+          if (settings.mode === GameMode.Default) {
+            this.askForCountPopup() ?
+              step = GameStep.AskForCount :
+              step = GameStep.Start
+          } else {
             step = GameStep.Start
+          }
       }
     } catch (error) {
       if (error instanceof OutOfCardsError) {
