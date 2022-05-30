@@ -27,6 +27,8 @@ export default function Simulations() {
   let [simResults, setSimResults] = useState([])
   const [loading, setLoading] = useState(false)
   let [showModal, setShowModal] = useState(false)
+  let [countingSystem, setCountingSystem] = useState(0)
+  let [deckEstimation, setDeckEstimation] = useState(0)
 
   let [playerBetSpread, setPlayerBetSpread] = useState([
     25,
@@ -93,7 +95,8 @@ export default function Simulations() {
 
     let options = {
       hands,
-
+      countingSystem,
+      deckEstimation,
       playerStrategy,
 
       playerBetSpread,
@@ -238,6 +241,15 @@ export default function Simulations() {
         <h1>New Simulation</h1>
         <div className={styles.simulationsContainer}>
           <div className={styles.tableRulesContainer}>
+
+            <div className={styles.rulesSection}>
+              <h3>Counting system</h3>
+              <select value={countingSystem} onChange={e => setCountingSystem(JSON.parse(e.target.value))}>
+                <option value={0}>HiLo</option>
+                <option value={2}>KO</option>
+              </select>
+            </div>
+
             <div className={styles.rulesSection}>
               <h3>Hands Played</h3>
               <input type="number"
@@ -250,9 +262,9 @@ export default function Simulations() {
             <div className={styles.rulesSection}>
               <h3>Player Strategy</h3>
               <select value={playerStrategy} onChange={e => setPlayerStrategy(JSON.parse(e.target.value))}>
-                <option value={1}>Hilo Basic Strategy</option>
-                <option value={2}>Hilo Illustrious 18 + Fab 4</option>
-                <option value={3}>All Deviations</option>
+                <option value={1}>Basic Strategy</option>
+                <option value={2}>HiLo Illustrious 18 + Fab 4</option>
+                <option value={3}>HiLo All Deviations</option>
               </select>
             </div>
             <div className={styles.rulesSection}>
@@ -305,6 +317,17 @@ export default function Simulations() {
                 <option value={8}>8</option>
               </select>
             </div>
+
+            <div className={styles.rulesSection}>
+              <h3>Deck Estimation</h3>
+              <select value={deckEstimation} onChange={e => setDeckEstimation(JSON.parse(e.target.value))}>
+                <option value={0}>Full Deck</option>
+                <option value={1}>Half Deck</option>
+                <option value={2}>Quarter Deck</option>
+                <option value={3}>Exact</option>
+              </select>
+            </div>
+
             <div className={styles.rulesSection}>
 
               <h3>Shoe Penetration (%)</h3>

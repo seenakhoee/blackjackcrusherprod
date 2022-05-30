@@ -7,6 +7,7 @@ import {
   BlackjackPayout,
   blackjackPayoutToString,
   playerStrategyToString,
+  CountingSystem,
 } from './types';
 
 export type SimulatorSettings = {
@@ -23,6 +24,7 @@ export type SimulatorSettings = {
   roundsPerHour: number;
   checkDeviations: boolean;
   checkWongsDeviations: boolean;
+  countingSystem: CountingSystem;
 } & TableRules;
 
 export type SimulatorResult = {
@@ -123,6 +125,7 @@ function defaultSettings({
   return {
     // Simulator-only settings.
     // hands: 10 ** 7,
+    countingSystem: CountingSystem.HiLo,
     checkDeviations: false,
     checkWongsDeviations: false,
     hands: 1000,
@@ -435,11 +438,12 @@ export default class Simulator {
     // TODO: Fix `handsPlayed` going slightly over the limit if the next
     // iteration involves playing more than one hand.
     while (handsPlayed < this.settings.hands) {
-      const betAmount = this.betAmount(this.game.shoe.hiLoTrueCountFullDeck);
-      const spotCount = this.spotCount(this.game.shoe.hiLoTrueCountFullDeck);
+      const betAmount = this.betAmount(this.game.shoe.getTrueCountConversion());
+      const spotCount = this.spotCount(this.game.shoe.getTrueCountConversion());
       const prevBalance = this.game.player.balance;
 
-      betHistory.push([betAmount, this.game.shoe.hiLoTrueCountFullDeck])
+      betHistory.push([betAmount, this.game.shoe.getTrueCountConversion()])
+
       this.game.run(betAmount, spotCount);
 
       // We calculate mean and variance from a stream of values since a large

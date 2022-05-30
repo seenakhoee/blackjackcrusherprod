@@ -92,8 +92,7 @@ export default class HiLoDeviationChecker {
     hand: Hand,
     { suggestFab4 = true }: { suggestFab4: boolean }
   ): Deviation | undefined {
-    const trueCount = game.shoe.hiLoTrueCount;
-
+    const trueCount = game.shoe.getTrueCountConversion();
     if (!game.dealer.upcard || hand.isSoft) {
       return;
     }

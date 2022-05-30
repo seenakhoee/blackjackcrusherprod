@@ -295,9 +295,9 @@ class Settings extends React.Component<any, any>
                       <Form.Select
                         value={this.state.deckEstimation}
                         onChange={this.updateDeckEstimation}>
-                        <option value={0}>Full</option>
-                        <option value={1}>Half</option>
-                        <option value={2}>Quarter</option>
+                        <option value={0}>Full Deck</option>
+                        <option value={1}>Half Deck</option>
+                        <option value={2}>Quarter Deck</option>
                         <option value={3}>Exact</option>
                       </Form.Select>
                     </Col>

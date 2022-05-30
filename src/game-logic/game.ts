@@ -482,17 +482,17 @@ export default class Game extends EventEmitter {
     }
 
     if (this.state.tcAtDeal === false) {
-      this.state.tcAtDeal = this.shoe.deckEstimation();
+      this.state.tcAtDeal = this.shoe.getTrueCountConversion();
 
-      if (!this.state.blackjackCounter[this.shoe.deckEstimation()]) {
-        this.state.blackjackCounter[this.shoe.deckEstimation()] = {}
+      if (!this.state.blackjackCounter[this.shoe.getTrueCountConversion()]) {
+        this.state.blackjackCounter[this.shoe.getTrueCountConversion()] = {}
       }
 
-      this.state.blackjackCounter[this.shoe.deckEstimation()].tcTotalCount =
-        ++this.state.blackjackCounter[this.shoe.deckEstimation()].tcTotalCount || 1;
+      this.state.blackjackCounter[this.shoe.getTrueCountConversion()].tcTotalCount =
+        ++this.state.blackjackCounter[this.shoe.getTrueCountConversion()].tcTotalCount || 1;
 
-      this.state.blackjackCounter[this.shoe.deckEstimation()].blackjacksCount =
-        this.state.blackjackCounter[this.shoe.deckEstimation()].blackjacksCount || 0;
+      this.state.blackjackCounter[this.shoe.getTrueCountConversion()].blackjacksCount =
+        this.state.blackjackCounter[this.shoe.getTrueCountConversion()].blackjacksCount || 0;
 
     }
 

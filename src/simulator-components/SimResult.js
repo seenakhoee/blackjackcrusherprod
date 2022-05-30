@@ -32,7 +32,7 @@ export default function SimResult({ test }) {
   function getPlayerStrategy() {
     switch (result.playerStrategy) {
       case 1:
-        return "Hilo Basic Strategy"
+        return "Basic Strategy"
         break;
       case 2:
         return "Hilo Illustrious 18"

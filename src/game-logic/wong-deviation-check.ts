@@ -267,7 +267,7 @@ export default class WongsFullDeviationChecker {
     hand: Hand,
     { suggestedSurrenderDeviation = true }: { suggestedSurrenderDeviation: boolean }
   ): Deviation | undefined {
-    const trueCount = game.shoe.hiLoTrueCount;
+    const trueCount = game.shoe.getTrueCountConversion();
 
     if (!game.dealer.upcard) {
       return;

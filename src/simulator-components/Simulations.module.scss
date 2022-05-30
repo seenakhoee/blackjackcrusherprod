@@ -3,6 +3,7 @@
 .simulationsContainer {
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
 }
 
 .betSpreadContainer {
@@ -149,7 +150,7 @@
 }
 
 .tableRulesContainer {
-  width: 50%;
+  width: 100%;
 
   div:first-child {
     padding-top: 20px;
@@ -178,7 +179,7 @@
       #00ffaa29 41.07%,
       #97313336 76.05%);
   position: absolute;
-  top: 50%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
@@ -196,11 +197,12 @@
 }
 
 .newSimModalBackdrop {
+  position: fixed;
   background-color: rgb(0, 0, 0);
   opacity: .3;
-  height: 100%;
   width: 100%;
-  position: absolute;
+  top: 0;
+  bottom: 0;
   z-index: 10000;
 }
 
@@ -344,4 +346,32 @@
 
 .deleteAllBtn:hover {
   color: #777 !important;
+}
+
+@media (min-width: 500px) {
+  .newSimModal {
+    top: 70%;
+  }
+}
+
+@media (min-width: 600px) {
+  .newSimModal {
+    top: 60%;
+  }
+}
+
+@media (min-width: 700px) {
+  .simulationsContainer {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+
+  .tableRulesContainer {
+    width: 50%;
+  }
+
+  .newSimModal {
+    top: 50%;
+  }
 }

@@ -67,8 +67,7 @@ export default class Shoe extends GameObject {
   }
 
   resetCards(runningCount): void {
-    this.runningCount = this.getRunningCount();
-    this.currentCardIndex = this.cards.length - 1;
+    this.setCards(runningCount, this._setupCards());
     this.shuffle();
   }
 
@@ -131,7 +130,6 @@ export default class Shoe extends GameObject {
   }
 
   getTrueCountConversion() {
-
     switch (settings.countingSystem) {
       case CountingSystem.HiLo:
         return this.deckEstimation();
@@ -211,7 +209,6 @@ export default class Shoe extends GameObject {
   }
 
   get hiLoTrueCount(): number {
-    console.log('is this run')
     return Math.floor((this.runningCount / this.decksRemaining) * 100) / 100;
   }
 
