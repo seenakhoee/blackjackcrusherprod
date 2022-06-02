@@ -375,7 +375,7 @@ export default class Game extends EventEmitter {
 
   checkTcAnswer() {
     // if correct step = GameStep.Start
-    if (this.shoe.deckEstimation() === this.state.userInputTc) {
+    if (this.shoe.getTrueCountConversion() === this.state.userInputTc) {
       return true
     } else {
       this.state.errorPopup = true;

@@ -191,7 +191,6 @@ export default class KoFullDeviationChecker {
     if (!gameSettings.koDeviations) {
       return false;
     }
-    console.log('does this run')
     const deviation = this._suggest(game, hand, { suggestedSurrenderDeviation: true });
 
     if (!deviation) {

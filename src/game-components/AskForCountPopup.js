@@ -72,6 +72,7 @@ export default function AskForCountPopup({ askForCountValue, round, step, hiLoTr
 
     game.state.userInputTC = true;
     showCountPopup = false;
+    console.log(showCountPopup, 'is this run')
     game.emit(Event.UserInput, 'showCountPopup', showCountPopup)
   };
 
