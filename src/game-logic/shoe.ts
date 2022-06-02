@@ -6,6 +6,7 @@ import BasicStrategyChecker from './basic-strategy-checker';
 import ExtendableError from './extendable-error';
 import { illustrious18Deviations } from './hi-lo-deviation-checker';
 import { wongsFullSoftDeviations, wongsFull } from './wong-deviation-check';
+import { Ko } from './ko-deviations';
 
 import { settings } from './game';
 import {
@@ -362,18 +363,29 @@ export default class Shoe extends GameObject {
 
     let mode;
     let chartTypeGameMode;
-    switch (settings.mode) {
-      case GameMode.Illustrious18:
-        mode = illustrious18Deviations
-        chartTypeGameMode = ChartType.Hard
-        break;
-      case GameMode.SoftTotals:
-        mode = wongsFullSoftDeviations
-        chartTypeGameMode = ChartType.Soft
-        break;
-      case GameMode.HardTotals:
-        mode = wongsFull
-        chartTypeGameMode = ChartType.Hard
+
+    if (settings.countingSystem === CountingSystem.HiLo) {
+      switch (settings.mode) {
+        case GameMode.Illustrious18:
+          mode = illustrious18Deviations
+          chartTypeGameMode = ChartType.Hard
+          break;
+        case GameMode.SoftTotals:
+          mode = wongsFullSoftDeviations
+          chartTypeGameMode = ChartType.Soft
+          break;
+        case GameMode.HardTotals:
+          mode = wongsFull
+          chartTypeGameMode = ChartType.Hard
+      }
+    }
+
+    if (settings.countingSystem === CountingSystem.Ko) {
+      switch (settings.mode) {
+        case GameMode.HardTotals:
+          mode = Ko
+          chartTypeGameMode = ChartType.Hard
+      }
     }
     // the playerTotal from the entries, not the actual playerTotal from the hand delt
     const [playerTotal, entries] = Utils.arraySample(

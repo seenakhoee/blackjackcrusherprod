@@ -6,6 +6,8 @@ import Player from './player';
 import BasicStrategyChecker from './basic-strategy-checker';
 import HiLoDeviationChecker from './hi-lo-deviation-checker';
 import WongsFullDeviationChecker from './wong-deviation-check';
+import KoDeviationsChecker from './ko-deviations';
+
 import Hand from './hand';
 import {
   Move,
@@ -27,6 +29,7 @@ export type GameSettings = {
   disableEvents: boolean;
   checkDeviations: boolean;
   checkWongsDeviations: boolean;
+  koDeviations: boolean;
   mode: GameMode;
   countingSystem: CountingSystem;
   debug: boolean;
@@ -65,6 +68,7 @@ function defaultSettings(minimumBet = 10 * 100): GameSettings {
     autoDeclineInsurance: false,
     disableEvents: false,
     checkDeviations: true,
+    koDeviations: false,
 
     // Can be one of 'GameMode.Default', 'GameMode.Pairs', 'GameMode.Uncommon',
     // 'GameMode.Illustrious18'. If the mode is set to 'GameMode.Illustrious18',
@@ -271,10 +275,20 @@ export default class Game extends EventEmitter {
   }
 
   validateInput(input: Move, hand: Hand): void {
-    const checkerResult =
-      WongsFullDeviationChecker.check(this, hand, input) ||
-      HiLoDeviationChecker.check(this, hand, input) ||
-      BasicStrategyChecker.check(this, hand, input);
+    let checkerResult;
+    if (settings.countingSystem === CountingSystem.HiLo) {
+      checkerResult =
+        WongsFullDeviationChecker.check(this, hand, input) ||
+        HiLoDeviationChecker.check(this, hand, input) ||
+        BasicStrategyChecker.check(this, hand, input);
+    }
+
+    if (settings.countingSystem === CountingSystem.Ko) {
+      checkerResult =
+        KoDeviationsChecker.check(this, hand, input) ||
+        BasicStrategyChecker.check(this, hand, input);
+    }
+
 
     if (typeof checkerResult === 'object' && checkerResult.hint) {
       this.state.playCorrection = checkerResult.hint;

@@ -4,14 +4,14 @@ import Button from 'react-bootstrap/Button';
 import { render } from '@testing-library/react';
 
 class Square extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      showSquare : false
+      showSquare: false
     }
   }
 
-  showSquare(){
+  showSquare() {
     this.setState({
       showSquare: !this.state.showSquare
     })
@@ -19,10 +19,10 @@ class Square extends React.Component {
 
   rSquare() {
     if (this.state.showSquare) {
-        return <button className={`square ${this.props.color}`} onClick={() => this.showSquare()}>{this.props.value}</button>
-      } else {
-        return <button className={`square`} onClick={() => this.showSquare()}></button>
-      }
+      return <button className={`square ${this.props.color}`} onClick={() => this.showSquare()}>{this.props.value}</button>
+    } else {
+      return <button className={`square`} onClick={() => this.showSquare()}></button>
+    }
   }
 
   render() {
@@ -40,156 +40,156 @@ class PairSplitting extends React.Component {
   }
   renderSquare(props, color) {
     return (
-      <Square value={props} color={color}/>
+      <Square value={props} color={color} />
     );
   }
   render() {
     return (
-    <div className="all-board-rows">
-      <div className="board-row">
-        {this.renderSquare()}
-        {this.renderSquareShow('2')}
-        {this.renderSquareShow('3')}
-        {this.renderSquareShow('4')}
-        {this.renderSquareShow('5')}
-        {this.renderSquareShow('6')}
-        {this.renderSquareShow('7')}
-        {this.renderSquareShow('8')}
-        {this.renderSquareShow('9')}
-        {this.renderSquareShow('T')}
-        {this.renderSquareShow('A')}
+      <div className="all-board-rows">
+        <div className="board-row">
+          {this.renderSquare()}
+          {this.renderSquareShow('2')}
+          {this.renderSquareShow('3')}
+          {this.renderSquareShow('4')}
+          {this.renderSquareShow('5')}
+          {this.renderSquareShow('6')}
+          {this.renderSquareShow('7')}
+          {this.renderSquareShow('8')}
+          {this.renderSquareShow('9')}
+          {this.renderSquareShow('T')}
+          {this.renderSquareShow('A')}
+        </div>
+        <div className="board-row">
+          {this.renderSquareShow('A,A')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('-4-', 'greenSquare')}
+        </div>
+        <div className="board-row">
+          {this.renderSquareShow('T,T')}
+          {this.renderSquare('10+')}
+          {this.renderSquare('8+')}
+          {this.renderSquare('6+')}
+          {this.renderSquare('5+')}
+          {this.renderSquare('4+')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+        </div>
+        <div className="board-row">
+          {this.renderSquareShow('9,9')}
+          {this.renderSquare('-2-', 'greenSquare')}
+          {this.renderSquare('-4-', 'greenSquare')}
+          {this.renderSquare('-5-', 'greenSquare')}
+          {this.renderSquare('-6-', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('3+/7+')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('N')}
+          {this.renderSquare('2+/3+')}
+        </div>
+        <div className="board-row">
+          {this.renderSquareShow('8,8')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('8+/5+', 'greenSquare')}
+          {this.renderSquare('-1-', 'greenSquare')}
+        </div>
+        <div className="board-row">
+          {this.renderSquareShow('7,7')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('4+/N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+        </div>
+        <div className="board-row">
+          {this.renderSquareShow('6,6')}
+          {this.renderSquare('-2-/1+', 'turquoiseSquare')}
+          {this.renderSquare('-4-', 'greenSquare')}
+          {this.renderSquare('-6-', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('N', 'greenSquare')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+        </div>
+        <div className="board-row">
+          {this.renderSquareShow('5,5')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+        </div>
+        <div className="board-row">
+          {this.renderSquareShow('4,4')}
+          {this.renderSquare('N')}
+          {this.renderSquare('7+/N')}
+          {this.renderSquare('3+/N')}
+          {this.renderSquare('-1-/N', 'turquoiseSquare')}
+          {this.renderSquare('-5-/N', 'turquoiseSquare')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+        </div>
+        <div className="board-row">
+          {this.renderSquareShow('3,3')}
+          {this.renderSquare('0/8+', 'turquoiseSquare')}
+          {this.renderSquare('-3-/3+', 'turquoiseSquare')}
+          {this.renderSquare('-2-', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('5+/N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+        </div>
+        <div className="board-row">
+          {this.renderSquareShow('2,2')}
+          {this.renderSquare('Y/7+', 'turquoiseSquare')}
+          {this.renderSquare('Y/3+', 'turquoiseSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
+          {this.renderSquare('5+/N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+          {this.renderSquare('N')}
+        </div>
       </div>
-      <div className="board-row">
-        {this.renderSquareShow('A,A')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('-4-', 'greenSquare')}
-      </div>
-      <div className="board-row">
-        {this.renderSquareShow('T,T')}
-        {this.renderSquare('10+')}
-        {this.renderSquare('8+')}
-        {this.renderSquare('6+')}
-        {this.renderSquare('5+')}
-        {this.renderSquare('4+')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-      </div>
-      <div className="board-row">
-        {this.renderSquareShow('9,9')}
-        {this.renderSquare('-2-','greenSquare')}
-        {this.renderSquare('-4-', 'greenSquare')}
-        {this.renderSquare('-5-', 'greenSquare')}
-        {this.renderSquare('-6-', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('3+/7+')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('N')}
-        {this.renderSquare('2+/3+')}
-      </div>
-      <div className="board-row">
-        {this.renderSquareShow('8,8')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('8+/5+', 'greenSquare')}
-        {this.renderSquare('-1-', 'greenSquare')}
-      </div>
-      <div className="board-row">
-        {this.renderSquareShow('7,7')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('4+/N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-      </div>
-      <div className="board-row">
-        {this.renderSquareShow('6,6')}
-        {this.renderSquare('-2-/1+', 'turquoiseSquare')}
-        {this.renderSquare('-4-', 'greenSquare')}
-        {this.renderSquare('-6-', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-      </div>
-      <div className="board-row">
-        {this.renderSquareShow('5,5')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-      </div>
-      <div className="board-row">
-        {this.renderSquareShow('4,4')}
-        {this.renderSquare('N')}
-        {this.renderSquare('7+/N')}
-        {this.renderSquare('3+/N')}
-        {this.renderSquare('-1-/N', 'turquoiseSquare')}
-        {this.renderSquare('-5-/N', 'turquoiseSquare')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-      </div>
-      <div className="board-row">
-        {this.renderSquareShow('3,3')}
-        {this.renderSquare('0/8+', 'turquoiseSquare')}
-        {this.renderSquare('-3-/3+', 'turquoiseSquare')}
-        {this.renderSquare('-2-', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('5+/N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-      </div>
-      <div className="board-row">
-        {this.renderSquareShow('2,2')}
-        {this.renderSquare('Y/7+', 'turquoiseSquare')}
-        {this.renderSquare('Y/3+', 'turquoiseSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('Y', 'greenSquare')}
-        {this.renderSquare('5+/N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-        {this.renderSquare('N')}
-      </div>
-    </div>
     );
   }
 }
@@ -649,7 +649,7 @@ class Board extends React.Component {
   }
 }
 
-const H17FlashcardChart: any = ({ showChart, toggleH17FlashcardChart, openH17, showS17}) => {
+const H17FlashcardChart: any = ({ showChart, toggleH17FlashcardChart, openH17, showS17 }) => {
 
   return (
 

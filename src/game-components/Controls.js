@@ -16,6 +16,7 @@ export default function Controls(
     toggleSettings,
     toggleH17Chart,
     toggleS17Chart,
+    toggleKoChart,
     toggleH17FlashcardChart,
     toggleBasicStrategyChart,
     allowLateSurrender,
@@ -24,7 +25,7 @@ export default function Controls(
     allowDAS,
     fromSplit,
     showDealButton,
-    doubleOnly911
+    doubleOnly911,
   }) {
 
   const history = useHistory()
@@ -144,8 +145,9 @@ export default function Controls(
             <Dropdown.Toggle variant={'outline-secondary'}>Charts</Dropdown.Toggle>
             <Dropdown.Menu variant="dark">
               <Dropdown.Item onClick={toggleBasicStrategyChart}>Basic Strategy</Dropdown.Item>
-              <Dropdown.Item onClick={toggleH17Chart}>H17 + Deviations</Dropdown.Item>
-              <Dropdown.Item onClick={toggleS17Chart}>S17 + Deviations</Dropdown.Item>
+              <Dropdown.Item onClick={toggleH17Chart}>HiLo H17</Dropdown.Item>
+              <Dropdown.Item onClick={toggleS17Chart}>HiLo S17</Dropdown.Item>
+              <Dropdown.Item onClick={toggleKoChart}>KO</Dropdown.Item>
               <Dropdown.Item onClick={toggleH17FlashcardChart}>Flashcard H17 + Deviation</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>

@@ -37,6 +37,7 @@ class Settings extends React.Component<any, any>
       allowResplitAces: false,
       deckEstimation: DeckEstimation.Full,
       onlyDouble911: false,
+      koDeviations: false,
     }
   }
 
@@ -45,6 +46,7 @@ class Settings extends React.Component<any, any>
     let newSettings = {
       checkDeviations: this.state.checkDeviations,
       checkWongsDeviations: this.state.checkWongsDeviations,
+      koDeviations: this.state.koDeviations,
 
       // Table rules
       allowDoubleAfterSplit: this.props.allowDoubleAfterSplit,
@@ -98,19 +100,20 @@ class Settings extends React.Component<any, any>
   updateCountingSystem = (e) => {
     this.setState({ countingSystem: JSON.parse(e.target.value) })
 
-    if (this.state.countingSystem === CountingSystem.Ko) {
+    if (JSON.parse(e.target.value) === CountingSystem.Ko) {
       this.setState({
         checkDeviations: false,
         checkWongsDeviations: false,
-        deviations: 'noDeviations',
+        deviations: 'koDeviations',
+        koDeviations: true
       })
     }
 
-    if (this.state.countingSystem === CountingSystem.Zen) {
+    if (JSON.parse(e.target.value) === CountingSystem.Zen) {
       this.setState({
         checkDeviations: false,
         checkWongsDeviations: false,
-        deviations: 'noDeviations',
+        deviations: 'basicStrategy',
       })
     }
   }
@@ -125,11 +128,22 @@ class Settings extends React.Component<any, any>
 
   updateDeviation = (e) => {
 
-    if (e.target.value === 'noDeviations') {
+    if (e.target.value === 'koDeviations') {
       this.setState({
         checkDeviations: false,
         checkWongsDeviations: false,
-        deviations: 'noDeviations',
+        deviations: 'koDeviations',
+        koDeviations: true,
+
+      })
+    }
+
+    if (e.target.value === 'basicStrategy') {
+      this.setState({
+        checkDeviations: false,
+        checkWongsDeviations: false,
+        deviations: 'basicStrategy',
+        koDeviations: false,
       })
     }
 
@@ -138,6 +152,7 @@ class Settings extends React.Component<any, any>
         checkDeviations: true,
         checkWongsDeviations: false,
         deviations: 'ill18+fab4',
+        koDeviations: false,
       })
     }
 
@@ -146,6 +161,7 @@ class Settings extends React.Component<any, any>
         checkDeviations: true,
         checkWongsDeviations: true,
         deviations: 'allDeviations',
+        koDeviations: false,
       })
     }
   }
@@ -165,6 +181,7 @@ class Settings extends React.Component<any, any>
       penetration,
       countingSystem,
     } = this.state;
+
 
     return (
 
@@ -256,18 +273,22 @@ class Settings extends React.Component<any, any>
                       <p className="statsTitle">Focus Area</p>
                       <Form.Select value={mode} onChange={this.updateMode} aria-label="Default select example">
                         <option value={0}>Default</option>
-                        <option value={3}>Illustrious 18</option>
+                        {(countingSystem === CountingSystem.HiLo) && <option value={3}>Illustrious 18</option>}
                         <option value={1}>Pairs</option>
-                        <option value={4}>Soft Totals</option>
+                        {(countingSystem === CountingSystem.HiLo) && <option value={4}>Soft Totals</option>}
                         <option value={5}>Hard Totals</option>
                       </Form.Select>
                     </Col>
                     <Col>
                       <p className="statsTitle">Deviations</p>
-                      <Form.Select value={deviations} onChange={this.updateDeviation} aria-label="Default select example">
-                        <option value={'noDeviations'}>Basic Strategy</option>
-                        <option value={'ill18+fab4'}>Illustrious 18 + Fab 4</option>
-                        <option value={'allDeviations'}>All Of Stanford Wongs Deviations</option>
+                      <Form.Select
+                        value={deviations}
+                        onChange={(e) => { this.updateDeviation(e) }}>
+                        <option value={'basicStrategy'}>Basic Strategy</option>
+                        {(countingSystem === CountingSystem.HiLo) && <option value={'ill18+fab4'}>Illustrious 18 + Fab 4</option>}
+                        {(countingSystem === CountingSystem.HiLo) && <option value={'allDeviations'}>Wongs Expanded</option>}
+                        {(countingSystem === CountingSystem.Ko) && <option value={'koDeviations'}>Ko</option>}
+
                       </Form.Select>
                     </Col>
                   </Row>

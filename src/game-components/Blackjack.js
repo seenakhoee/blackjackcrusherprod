@@ -2,14 +2,15 @@ import React from 'react';
 import Controls from './Controls.js';
 import Hand from './Hand.js'
 import Stats from './Stats.js'
-import H17Chart from './H17Chart.js'
-import S17Chart from './S17Chart.js'
-import H17FlashcardChart from './Flashcard-H17Chart'
+import H17Chart from './charts/HiLo-H17Chart.js'
+import S17Chart from './charts/HiLo-S17Chart.js'
+import H17FlashcardChart from './charts/HiLo-Flashcard-H17Chart'
 import HeaderDisplay from './HeaderDisplay'
 import Instructions from './Instructions'
-import BasicStrategyChart from './BasicStrategyChart';
+import BasicStrategyChart from './charts/BasicStrategyChart';
 import AskForCountPopup from './AskForCountPopup'
 import RCWithDeck from './RCWithDeck'
+import KOChart from './charts/Ko-Chart.js';
 
 import Settings from './Settings.js'
 
@@ -46,6 +47,7 @@ class Blackjack extends React.Component<any, any>
       openChart: false,
       openH17: false,
       openS17: false,
+      openKoChart: false,
       openH17FlashcardChart: false,
       openBasicStrategyChart: false,
       openInstructions: false,
@@ -286,6 +288,13 @@ class Blackjack extends React.Component<any, any>
     })
   }
 
+  toggleKoChart() {
+    console.log('yo')
+    this.setState({
+      openKoChart: !this.state.openKoChart
+    })
+  }
+
   toggleS17Chart() {
     this.setState({
       openS17: !this.state.openS17
@@ -371,6 +380,7 @@ class Blackjack extends React.Component<any, any>
       openSettings,
       openH17,
       openS17,
+      openKoChart,
       openH17FlashcardChart,
       openInstructions,
       openBasicStrategyChart,
@@ -382,6 +392,7 @@ class Blackjack extends React.Component<any, any>
       askForCountValue,
       round
     } = this.state;
+
 
     return (
       <>
@@ -432,6 +443,15 @@ class Blackjack extends React.Component<any, any>
             toggleS17Chart={() => this.toggleS17Chart()}
             showS17={openS17}
           />
+          }
+          {
+            openKoChart && <KOChart
+              deckCount={deckCount}
+              showChart={openKoChart}
+              onKeyPress={this.toggleKeypress}
+              toggleKoChart={() => this.toggleKoChart()}
+              openKoChart={openKoChart}
+            />
           }
           {openH17FlashcardChart && <H17FlashcardChart
             showChart={openH17FlashcardChart}
@@ -529,6 +549,7 @@ class Blackjack extends React.Component<any, any>
                 toggleBasicStrategyChart={() => this.toggleBasicStrategyChart()}
                 toggleS17Chart={() => this.toggleS17Chart()}
                 toggleH17Chart={() => this.toggleH17Chart()}
+                toggleKoChart={() => this.toggleKoChart()}
                 toggleH17FlashcardChart={() => this.toggleH17FlashcardChart()}
                 toggleInstructions={() => this.toggleInstructions()}
                 allowLateSurrender={playerHands[this.state.focusedHandIndex] ? playerHands[this.state.focusedHandIndex].allowSurrender : false}
