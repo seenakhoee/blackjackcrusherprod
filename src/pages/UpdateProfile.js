@@ -114,7 +114,7 @@ export default function UpdateProfile() {
           </div>
           <div className={styles.info}>
             <h2>Subscription</h2>
-            <p>$19.00 a month</p>
+            <p>$4.00 a month</p>
 
             <h2>Member since</h2>
             <p>Date</p>

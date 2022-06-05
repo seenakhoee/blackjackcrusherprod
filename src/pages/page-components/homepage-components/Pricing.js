@@ -20,7 +20,7 @@ export default function Pricing() {
               <div className={styles.card__pricing}>
                 <div className={styles.card__pricingNumber}>
                   <span className={styles.card__pricingSymbol}>$</span>
-                  19
+                  4
                 </div>
                 <span className={styles.card__pricingMonth}>/month</span>
               </div>

@@ -34,6 +34,7 @@ export const Ko: Deviations = new Map<playerTotal, Map<dealerCard, Deviation>>([
   ],
   [10, new Map([
     [10, { correctMove: Move.Double, index: ['>=', 4] }],
+    [11, { correctMove: Move.Double, index: ['>=', 4] }],
   ]),
   ],
   [11, new Map([
@@ -41,6 +42,8 @@ export const Ko: Deviations = new Map<playerTotal, Map<dealerCard, Deviation>>([
   ])
   ],
   [12, new Map([
+    [2, { correctMove: Move.Stand, index: ['>=', 4] }],
+    [3, { correctMove: Move.Stand, index: ['>=', 4] }],
     [4, { correctMove: Move.Hit, index: ['<=', -4] }],
     [5, { correctMove: Move.Hit, index: ['<=', -4] }],
     [6, { correctMove: Move.Hit, index: ['<=', -4] }],
@@ -56,6 +59,7 @@ export const Ko: Deviations = new Map<playerTotal, Map<dealerCard, Deviation>>([
   ])
   ],
   [16, new Map([
+    [9, { correctMove: Move.Stand, index: ['>=', 4] }],
     [10, { correctMove: Move.Stand, index: ['>=', 1] }]
   ])
   ],

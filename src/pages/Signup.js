@@ -40,7 +40,7 @@ export default function Signup() {
         // the cloud function creates the stripe checkout url
         // and it will put it in the same document created.
         const docRef = await collectionRef.add({
-          price: 'price_1KzAOFCXWedlGQZA7EyRGebe',
+          price: 'price_1L77AoCXWedlGQZAM0QjL8Ai',
           success_url: `${window.location.origin}/blackjack`,
           cancel_url: window.location.origin,
         });
