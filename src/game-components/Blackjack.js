@@ -197,7 +197,9 @@ class Blackjack extends React.Component<any, any>
     this.props.game.on(Event.CreateRecord, (entityName, data) => {
       if (typeof data.checkerResult === 'object' ? data.checkerResult.code : null) {
 
-        let playerMistake = `Player had ${data.playerHand}, dealers upcard was ${data.dealerHand}. ${data.checkerResult.hint}`
+        console.log(data, 'data')
+
+        let playerMistake = `Player had ${data.playerHand}, dealers upcard was ${data.dealerHand}. With ${this.state.deckCount * 52 - this.state.stats.numberOfCardsRemaining} cards delt, ${this.state.stats.numberOfCardsRemaining} cards remaining, RC = ${this.state.stats.runningCount}, TC = ${this.state.stats.hiLoTrueCount}, ${data.checkerResult.hint}`
 
         this.setState({
           playerMistakes: [...this.state.playerMistakes, playerMistake],
