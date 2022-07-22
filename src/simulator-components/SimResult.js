@@ -67,7 +67,7 @@ export default function SimResult({ test }) {
 
         let title =
           [<div><p>True Count</p></div>,
-          <div><p>Total Hands Delt</p></div>,
+          <div><p>Total Hands Dealt</p></div>,
           <div><p>Total Blackjacks</p></div>,
           <div><p>% Blackjack Received vs True Count</p></div>,
           <div><p>% Blackjack Received vs Total Hands</p></div>]

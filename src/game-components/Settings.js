@@ -303,7 +303,7 @@ class Settings extends React.Component<any, any>
                   </Form.Select> */}
                   <Row>
                     <Col>
-                      <p className="statsTitle">Decks Delt From The Shoe</p>
+                      <p className="statsTitle">Decks Dealt From The Shoe</p>
                       <Form.Select value={penetration} onChange={this.updatePen} aria-label="Default select example">
                         <option value={0.875}>87.5%</option>
                         <option value={0.75}>75%</option>

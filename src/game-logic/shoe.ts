@@ -201,7 +201,7 @@ export default class Shoe extends GameObject {
     return this.cardsRemainingRatio * settings.deckCount;
   }
 
-  get numberOfDecksDelt(): number {
+  get numberOfDecksDealt(): number {
     return this.maxCards / 52
   }
 
@@ -216,7 +216,7 @@ export default class Shoe extends GameObject {
   get hiLoTrueCountFullDeck(): number {
     // running count / number of decks remaining floored
 
-    // number of cards - number of decks delt
+    // number of cards - number of decks dealt
     //
     let tc = this.runningCount / Math.ceil(this.cardCount / 52);
 
@@ -231,7 +231,7 @@ export default class Shoe extends GameObject {
 
   get hiLoTrueCountHalfDeck(): number {
     // running count / number of decks remaining floored
-    // number of cards - number of decks delt
+    // number of cards - number of decks dealt
     //
     let tc = this.runningCount / (Math.ceil((this.cardCount / 52) / .50) * .50);
 
@@ -246,7 +246,7 @@ export default class Shoe extends GameObject {
 
   get hiLoTrueCountQuarterDeck(): number {
     // running count / number of decks remaining floored
-    // number of cards - number of decks delt
+    // number of cards - number of decks dealt
 
     let tc = this.runningCount / (Math.ceil((this.cardCount / 52) / .25) * .25);
 
@@ -387,7 +387,7 @@ export default class Shoe extends GameObject {
           chartTypeGameMode = ChartType.Hard
       }
     }
-    // the playerTotal from the entries, not the actual playerTotal from the hand delt
+    // the playerTotal from the entries, not the actual playerTotal from the hand dealt
     const [playerTotal, entries] = Utils.arraySample(
       Array.from(mode.entries())
     );

@@ -336,7 +336,7 @@ export default function Simulations() {
                 value={penetration}
                 required
               />
-              <p>Number of Decks Delt From The Shoe</p>
+              <p>Number of Decks Dealt From The Shoe</p>
             </div>
             <div className={styles.rulesSection}>
 

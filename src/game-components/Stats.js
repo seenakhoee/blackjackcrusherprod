@@ -62,7 +62,7 @@ class Stats extends React.Component<any, any>
             <p>Running Count : {stats.runningCount}</p>
             <p>True Count : {stats.hiLoTrueCount}</p>
             <div className={styles.movesContainer}>
-              <p>Number of Cards Delt : {deckCount * 52 - stats.numberOfCardsRemaining}</p>
+              <p>Number of Cards Dealt : {deckCount * 52 - stats.numberOfCardsRemaining}</p>
               <p>Number of Cards Remaining : {stats.numberOfCardsRemaining}</p>
             </div>
             <div className={styles.movesContainer}>

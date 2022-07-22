@@ -18,7 +18,7 @@ export default function MemorizeDeviations() {
                 <p className={styles.paragraph}>There is a Fashcard Chart. When you intially open the chart, all the boxes are blank with no values. A good practice to memorize devations is to think of the deviation, then click on the box to see if you are correct. Doing this over and over again will help tremendously!</p>
 
                 <p className={styles.paragraph}>Game Mode</p>
-                <p className={styles.paragraph}>With game modes, you are able to pick an area to focus on. For example just soft hands, or just pairs. Then you will be delt only those type of hands. Once delt a random running count will be provided. Your job is to convert the running count to a true count, then figure our the correct play for that situation. The ultimate way to memorize deviations is with this practice!</p>
+                <p className={styles.paragraph}>With game modes, you are able to pick an area to focus on. For example just soft hands, or just pairs. Then you will be dealt only those type of hands. Once dealt a random running count will be provided. Your job is to convert the running count to a true count, then figure our the correct play for that situation. The ultimate way to memorize deviations is with this practice!</p>
               </div>
             </div>
           </div>

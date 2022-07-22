@@ -74,7 +74,7 @@ export default function DiscardTray({ cards, currentPen, step, deckCount }) {
     // </div>
 
     <div className={styles.digitalDiscardBorder}>
-      <div className={styles.deltCards} style={{ height: `${pen}%` }}></div>
+      <div className={styles.dealtCards} style={{ height: `${pen}%` }}></div>
       {showDeckLine()}
     </div>
   );

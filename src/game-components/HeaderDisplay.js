@@ -14,14 +14,14 @@ const HeaderDisplay: any = ({ pen, allowLateSurrender, allowDoubleAfterSplit, de
     return `${deckCount.toString()} Decks ${h17} ${das} ${ls}`
   }
 
-  function cardDelt() {
+  function cardDealt() {
     return Array.from({ length: Math.floor(cards.length * (pen / 100)) })
   }
 
   return (
 
     <div className={styles.headerInfo}>
-      < DiscardTray deckCount={deckCount} cards={cardDelt()} currentPen={pen} step={step} />
+      < DiscardTray deckCount={deckCount} cards={cardDealt()} currentPen={pen} step={step} />
       <div>
         <MyStopwatch />
         <p>{renderConditions(deckCount, hitSoft17, allowDoubleAfterSplit, allowLateSurrender)}</p>
