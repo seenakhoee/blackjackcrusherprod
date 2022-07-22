@@ -199,7 +199,7 @@ class Blackjack extends React.Component<any, any>
 
         console.log(data, 'data')
 
-        let playerMistake = `Player had ${data.playerHand}, dealers upcard was ${data.dealerHand}. With ${this.state.deckCount * 52 - this.state.stats.numberOfCardsRemaining} cards delt, ${this.state.stats.numberOfCardsRemaining} cards remaining, RC = ${this.state.stats.runningCount}, TC = ${this.state.stats.hiLoTrueCount}, ${data.checkerResult.hint}`
+        let playerMistake = `Player had ${data.playerHand}, dealers upcard was ${data.dealerHand}. With ${this.state.deckCount * 52 - this.state.stats.numberOfCardsRemaining} cards dealt, ${this.state.stats.numberOfCardsRemaining} cards remaining, RC = ${this.state.stats.runningCount}, TC = ${this.state.stats.hiLoTrueCount}, ${data.checkerResult.hint}`
 
         this.setState({
           playerMistakes: [...this.state.playerMistakes, playerMistake],
