@@ -27,7 +27,7 @@ class Stats extends React.Component<any, any>
 
   listOfMistakes(playerMistakes) {
     return playerMistakes.map((mistake, i) => {
-      return <li>{`${i + 1}. ${mistake}`}</li>
+      return <li className={styles.mistakes}>{`${i + 1}. ${mistake}`}</li>
     })
   }
 
