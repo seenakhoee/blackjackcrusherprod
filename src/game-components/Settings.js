@@ -65,7 +65,9 @@ class Settings extends React.Component<any, any>
       countingSystem: this.state.countingSystem,
       askForCount: this.props.askForCountValue,
       deckEstimation: this.state.deckEstimation,
-      onlyDouble911: this.state.onlyDouble911
+      onlyDouble911: this.state.onlyDouble911,
+      // passing this property in only for history. For canceling settings
+      deviations: this.state.deviations
     }
 
     this.props.resetGame(newSettings)

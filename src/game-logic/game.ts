@@ -39,6 +39,7 @@ export type GameSettings = {
   spotCount: number;
   askForCount: number;
   onlyDouble911: boolean;
+  deviations: string;
   playerStrategyOverride: {
     [index: number]: PlayerStrategy;
   };
@@ -98,7 +99,10 @@ function defaultSettings(minimumBet = 10 * 100): GameSettings {
     spotCount: 1,
     askForCount: 3,
     deckEstimation: DeckEstimation.Full,
-    onlyDouble911: false
+    onlyDouble911: false,
+    // deviations property only used as string. will need to update.
+    // for canceling settings popup to revert
+    deviations: 'allDeviations',
   };
 }
 
