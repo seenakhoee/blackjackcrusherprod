@@ -86,7 +86,10 @@ export default class Utils {
   }
 
   static compareRange(number: number, range: [string, number]): boolean {
-    return range[0][0] === '>' ? number >= range[1] : number <= range[1];
+    console.log(range[0][0], 'what is this')
+    // changing number >= range[1] : number <= range[1];
+    // to number > range[1] : number < range[1];
+    return range[0][0] === '>' ? number > range[1] : number < range[1];
   }
 
   // See https://stackoverflow.com/a/40724354/659910
