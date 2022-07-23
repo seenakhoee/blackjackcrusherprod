@@ -147,6 +147,10 @@ export default class Game extends EventEmitter {
     return Utils.merge(settings, gameSettings);
   }
 
+  getSettings() {
+    return settings;
+  }
+
   setupState(): void {
     // We assign a random ID to each game so that we can link hand results with
     // wrong moves in the database.

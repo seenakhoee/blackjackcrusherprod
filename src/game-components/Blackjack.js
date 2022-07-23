@@ -99,20 +99,20 @@ class Blackjack extends React.Component<any, any>
     this.setState({ askForCountValue: JSON.parse(e.target.value) })
   }
 
-  updateAllowLateSurrender = (e) => {
-    this.setState({ allowLateSurrender: JSON.parse(e.target.value) })
+  updateAllowLateSurrender = (val) => {
+    this.setState({ allowLateSurrender: val })
   }
 
-  updateHitSoft17 = (e) => {
-    this.setState({ hitSoft17: JSON.parse(e.target.value) })
+  updateHitSoft17 = (val) => {
+    this.setState({ hitSoft17: val })
   }
 
-  updateDeckCount = (e) => {
-    this.setState({ deckCount: JSON.parse(e.target.value) })
+  updateDeckCount = (val) => {
+    this.setState({ deckCount: val })
   }
 
-  updateAllowDoubleAfterSplit = (e) => {
-    this.setState({ allowDoubleAfterSplit: JSON.parse(e.target.value) })
+  updateAllowDoubleAfterSplit = (val) => {
+    this.setState({ allowDoubleAfterSplit: val })
   }
 
   componentWillUnmount() {
@@ -464,6 +464,7 @@ class Blackjack extends React.Component<any, any>
           }
           <div className={this.state.openSettings ? "openSettings" : ''}>
             <Settings
+              getSettings={this.state.game.getSettings}
               stats={this.state.stats}
               showSettings={openSettings}
               onKeyPress={this.toggleKeypress}

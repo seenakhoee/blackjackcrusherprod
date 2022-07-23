@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
 import { render } from '@testing-library/react';
 import { createNewGame } from './GameSetup'
-import { GameMode, CountingSystem, DeckEstimation } from '../game-logic';
+import { Game, GameMode, CountingSystem, DeckEstimation } from '../game-logic';
 // pass in state as props
 // set the select as the props
 
@@ -71,6 +71,19 @@ class Settings extends React.Component<any, any>
     this.props.resetGame(newSettings)
     this.props.toggleSettings();
     // createNewGame(newSettings)
+  }
+
+  onCancel(props) {
+    props.updateDeckCount(props.getSettings().deckCount)
+    props.updateHitSoft17(props.getSettings().hitSoft17)
+    props.updateAllowDoubleAfterSplit(props.getSettings().allowDoubleAfterSplit)
+    props.updateAllowLateSurrender(props.getSettings().allowLateSurrender)
+
+    this.setState({
+      ...props.getSettings()
+    })
+
+    props.toggleSettings()
   }
 
   toggleKeyboardShortcuts = (e) => {
@@ -190,7 +203,7 @@ class Settings extends React.Component<any, any>
         <div>
           <>
             <Modal show={this.props.showSettings} onHide={this.props.toggleSettings} backdrop="static">
-              <Modal.Header closeButton closeVariant='white'>
+              <Modal.Header>
                 <Modal.Title>Game Setup</Modal.Title>
               </Modal.Header>
               <Form onSubmit={this.hanleSubmit}>
@@ -223,7 +236,7 @@ class Settings extends React.Component<any, any>
                   <p>Game Rules</p>
                   <Row>
                     <Col>
-                      <Form.Select value={this.props.hitSoft17} onChange={this.props.updateHitSoft17} aria-label="Default select example">
+                      <Form.Select value={this.props.hitSoft17} onChange={(e) => this.props.updateHitSoft17(JSON.parse(e.target.value))} aria-label="Default select example">
                         <option value={true}>H17</option>
                         <option value={false}>S17</option>
                       </Form.Select>
@@ -239,7 +252,7 @@ class Settings extends React.Component<any, any>
                   </Row>
                   <Row>
                     <Col>
-                      <Form.Select value={this.props.deckCount} onChange={this.props.updateDeckCount} aria-label="Default select example">
+                      <Form.Select value={this.props.deckCount} onChange={(e) => this.props.updateDeckCount(JSON.parse(e.target.value))} aria-label="Default select example">
                         <option value={1}>1 Deck</option>
                         <option value={2}>2 Decks</option>
                         <option value={4}>4 Decks</option>
@@ -248,7 +261,10 @@ class Settings extends React.Component<any, any>
                       </Form.Select>
                     </Col>
                     <Col>
-                      <Form.Select value={this.props.allowDoubleAfterSplit} onChange={this.props.updateAllowDoubleAfterSplit} aria-label="Default select example">
+                      <Form.Select
+                        value={this.props.allowDoubleAfterSplit}
+                        onChange={(e) => this.props.updateAllowDoubleAfterSplit(JSON.parse(e.target.value))}
+                        aria-label="Default select example">
                         <option value={true}>DAS</option>
                         <option value={false}>NDAS</option>
                       </Form.Select>
@@ -256,7 +272,10 @@ class Settings extends React.Component<any, any>
                   </Row>
                   <Row>
                     <Col>
-                      <Form.Select value={this.props.allowLateSurrender} onChange={this.props.updateAllowLateSurrender} aria-label="Default select example">
+                      <Form.Select
+                        value={this.props.allowLateSurrender}
+                        onChange={(e) => this.props.updateAllowLateSurrender(JSON.parse(e.target.value))}
+                        aria-label="Default select example">
                         <option value={false}>No Surrender</option>
                         <option value={true}>Surrender</option>
                       </Form.Select>
@@ -349,8 +368,8 @@ class Settings extends React.Component<any, any>
                   <Button variant="primary" data-action="rg" type="submit">
                     Restart
                   </Button>
-                  <Button variant="secondary" onClick={this.props.toggleSettings}>
-                    Close
+                  <Button variant="secondary" onClick={() => this.onCancel(this.props)}>
+                    Cancel
                   </Button>
                 </Modal.Footer>
               </Form>
