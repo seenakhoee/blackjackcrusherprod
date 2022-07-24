@@ -214,7 +214,7 @@ class Settings extends React.Component<any, any>
                     <Col>
                       <p>Ask For Count Every</p>
                       <Form.Select value={this.props.askForCountValue} onChange={this.props.selectAskForCountPopup} aria-label="Default select example">
-                        <option value={0}>End of Shoe</option>
+                        {/* <option value={0}>End of Shoe</option> */}
                         <option value={1}>1</option>
                         <option value={3}>3</option>
                         <option value={5}>5</option>
