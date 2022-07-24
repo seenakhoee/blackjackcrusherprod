@@ -26,9 +26,9 @@ export default function NavBar({ staticNav }) {
             <Link className={styles.navLinkCardCrusher} to="/simulations">
               <h2 >Card Crusher Simulator</h2>
             </Link>
-            <Link to="/blackjack" className={`${styles.btn} ${styles.btnGreen}`}>
+            <a href="https://blackjackcrusher.com/blackjack" className={`${styles.btn} ${styles.btnGreen}`}>
               Launch Blackjack Crusher
-            </Link>
+            </a>
           </div>
         </div>
         <div className={styles.howToCountBar}>
