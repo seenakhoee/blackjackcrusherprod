@@ -4,6 +4,10 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import HomePage from "../pages/HomePage"
 import Signup from "../pages/Signup"
 import HowToCountCards from "../pages/HowToCountCards"
+import WhatItTakes from "../pages/WhatItTakes"
+import HowMuchCanYouMake from "../pages/HowMuchCanYouMake"
+
+
 import Login from "../pages/Login"
 import Contact from "../pages/Contact"
 import TermsOfUse from "../pages/TermsOfUse"
@@ -42,6 +46,10 @@ function Routes() {
               <Route path="/privacy-policy" component={PrivacyPolicy} />
               <Route path="/terms-of-use" component={TermsOfUse} />
               <Route exact path="/how-to-count-cards" component={HowToCountCards} />
+              <Route exact path="/what-it-takes" component={WhatItTakes} />
+              <Route exact path="/how-much-can-you-make" component={HowMuchCanYouMake} />
+
+
               {/* <Route component={PageNotFound}>
                 <PageNotFound />
               </Route> */}

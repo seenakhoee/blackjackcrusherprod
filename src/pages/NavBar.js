@@ -35,10 +35,10 @@ export default function NavBar({ staticNav }) {
           <Link className={styles.mobileLink} to="/how-to-count-cards">
             <h2>How To Count Cards</h2>
           </Link>
-          <Link className={styles.mobileLink} to="/how-to-count-cards">
+          <Link className={styles.mobileLink} to="/how-much-can-you-make">
             <h2>How Much Can You Make</h2>
           </Link>
-          <Link className={styles.mobileLink} to="/how-to-count-cards">
+          <Link className={styles.mobileLink} to="/what-it-takes">
             <h2>What It Takes</h2>
           </Link>
         </div>
