@@ -167,7 +167,7 @@ class PairSplitting extends React.Component {
           {this.renderSquareShow('3,3')}
           {this.renderSquare('0/8+', 'turquoiseSquare')}
           {this.renderSquare('-3-/3+', 'turquoiseSquare')}
-          {this.renderSquare('-2-', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
           {this.renderSquare('Y', 'greenSquare')}
           {this.renderSquare('Y', 'greenSquare')}
           {this.renderSquare('Y', 'greenSquare')}

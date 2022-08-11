@@ -140,7 +140,7 @@ class PairSplitting extends React.Component {
           {this.renderSquare('3,3')}
           {this.renderSquare('-0/8+', 'turquoiseSquare')}
           {this.renderSquare('-3-/3+', 'turquoiseSquare')}
-          {this.renderSquare('-2-', 'greenSquare')}
+          {this.renderSquare('Y', 'greenSquare')}
           {this.renderSquare('Y', 'greenSquare')}
           {this.renderSquare('Y', 'greenSquare')}
           {this.renderSquare('Y', 'greenSquare')}
@@ -630,23 +630,23 @@ const H17Chart: any = ({ toggleH17Chart, openH17 }) => {
         <>
 
           <Modal show={openH17} onHide={toggleH17Chart}>
-              <div>
+            <div>
               <Modal.Header closeButton closeVariant='white'>
-                  <Modal.Title>Deviation Chart H17 DD & 6D</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  <div className="game">
-                    <div className="game-board">
-                      <Board />
-                    </div>
+                <Modal.Title>Deviation Chart H17 DD & 6D</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <div className="game">
+                  <div className="game-board">
+                    <Board />
                   </div>
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="outline-light" onClick={toggleH17Chart}>
-                    Close
-                  </Button>
-                </Modal.Footer>
-              </div>
+                </div>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="outline-light" onClick={toggleH17Chart}>
+                  Close
+                </Button>
+              </Modal.Footer>
+            </div>
           </Modal>
         </>
       </div>
