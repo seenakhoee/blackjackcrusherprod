@@ -17,20 +17,20 @@ export default function PrivateRoute({ component: Component, ...rest }) {
     <Route
       {...rest}
       render={props => {
-        if (!currentUser) {
-          return <Redirect to="/login" />
-        }
+        // if (!currentUser) {
+        //   return <Redirect to="/login" />
+        // }
         //if logged & paid return app
-        if (userSubscriptionStatus === 'trialing' || userSubscriptionStatus === 'active') {
+        // if (userSubscriptionStatus === 'trialing' || userSubscriptionStatus === 'active') {
 
-          game.resetState()
-          return <Component game={game} {...props} {...rest} />
-        }
+        //   game.resetState()
+        return <Component game={game} {...props} {...rest} />
+        // }
 
         //if logged & not paid - redirect to stripe url
-        if (userSubscriptionStatus !== 'trialing' || userSubscriptionStatus !== 'active') {
-          window.location.assign(userStripeLink);
-        }
+        // if (userSubscriptionStatus !== 'trialing' || userSubscriptionStatus !== 'active') {
+        //   window.location.assign(userStripeLink);
+        // }
       }}
     ></Route>
 

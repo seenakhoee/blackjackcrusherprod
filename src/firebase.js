@@ -8,8 +8,10 @@ const app = firebase.initializeApp({
   projectId: "blackjack-crusher",
   storageBucket: "blackjack-crusher.appspot.com",
   messagingSenderId: "703088305831",
-  appId: "1:703088305831:web:034f157f069af749be5d82"
+  appId: "1:703088305831:web:034f157f069af749be5d82",
+  measurementId: "G-T8Z1RZZL4H"
 })
 
 export const auth = app.auth()
+// const analytics = firebase.analytics()
 export default app
